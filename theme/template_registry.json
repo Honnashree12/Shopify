@@ -1,0 +1,10 @@
+{
+  "product_template": "templates/product.json",
+  "collection_template": "templates/collection.json",
+  "header": "sections/header.json",
+  "footer": "sections/footer.json",
+  "product_card": "snippets/product-card.liquid",
+  "global_css": "assets/base.css",
+  "sections": [],
+  "snippets": []
+}

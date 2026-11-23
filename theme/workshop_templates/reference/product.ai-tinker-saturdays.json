@@ -1,0 +1,83 @@
+{
+  "sections": {
+    "main": {
+      "type": "kiddypi-workshop-ai-tinker",
+      "blocks": {
+        "stage-1": {
+          "type": "stage",
+          "settings": {
+            "icon": "see",
+            "title": "See",
+            "bullets": "Image recognition\nObject detection\nPerson detection\nColor & gesture detection"
+          }
+        },
+        "stage-2": {
+          "type": "stage",
+          "settings": {
+            "icon": "listen",
+            "title": "Listen",
+            "bullets": "Sound classification\nKeyword detection\nSmart responses\nCommand inference"
+          }
+        },
+        "stage-3": {
+          "type": "stage",
+          "settings": {
+            "icon": "think",
+            "title": "Think",
+            "bullets": "Pattern recognition\nPredictions\nSmart decisions\nProblem solving"
+          }
+        },
+        "stage-4": {
+          "type": "stage",
+          "settings": {
+            "icon": "build",
+            "title": "Build",
+            "bullets": "AI Tools + Coding\nElectronics + Sensors\nBuild intelligent solutions\nMake ideas come alive"
+          }
+        },
+        "project-1": {
+          "type": "project",
+          "settings": {
+            "title": "Smart Bin",
+            "icon": "bin",
+            "description": "Sorts waste intelligently. AI identifies waste and helps sort it automatically."
+          }
+        },
+        "project-2": {
+          "type": "project",
+          "settings": {
+            "title": "Smart Plant Care",
+            "icon": "plant",
+            "description": "Watches. Thinks. Waters. Detects when the plant needs water and is ready automatically."
+          }
+        }
+      },
+      "block_order": [
+        "stage-1",
+        "stage-2",
+        "stage-3",
+        "stage-4",
+        "project-1",
+        "project-2"
+      ],
+      "settings": {
+        "hero_eyebrow": "AI Inventor Experience",
+        "hero_title": "AI Tinker",
+        "hero_title_accent": "Saturdays",
+        "hero_subtitle": "Where AI Meets the Real World",
+        "hero_tagline": "AI · Coding · Electronics · Sensors",
+        "intro_eyebrow": "About the Workshop",
+        "intro_title": "What is AI Tinker Saturdays?",
+        "journey_eyebrow": "The Experience",
+        "journey_title": "Where AI Meets the Real World",
+        "journey_intro": "Kids don't just learn AI. They tinker with it and build real solutions.",
+        "highlights_title": "Why Kids Love AI Tinker Saturdays",
+        "highlights": "Hands-on AI Experiments\nBuild Day-to-Day Solutions for Real World Problems\nAI + Coding + Electronics\nWork on Unique Projects\nShowcase Your Inventions",
+        "tech_list": "micro:bit, Arduino, Raspberry Pi, Sensors, Cameras, AI Tools, Robotics"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,3294 @@
+{
+    "total_products": 26,
+    "total_browser_evaluations": 208,
+    "summary": {
+        "pass": 175,
+        "fail": 31,
+        "not_verifiable": 18,
+        "browser_verified": 168,
+        "api_verified": 56,
+        "api_browser_matches": 178,
+        "api_browser_discrepancies": 46
+    },
+    "product_results": {
+        "Computing & AI Workbook 1 (Scratch)": {
+            "product_name": "Computing & AI Workbook 1 (Scratch)",
+            "product_id": "gid://shopify/Product/15132292546720",
+            "handle": "computing-ai-workbook-1-scratch",
+            "url": "https://kinq5t-q5.myshopify.com/products/computing-ai-workbook-1-scratch",
+            "category": "Books",
+            "verified_at": "2026-09-22T10:37:52.455080",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/computing-ai-workbook-1-scratch",
+                        "page_title": "Computing & AI Workbook 1 (Scratch) \u2013 KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\computing-ai-workbook-1-scratch-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'Computing & AI Workbook 1 (Scratch) \u2013 KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "Computing & AI Workbook 1 (Scratch)"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('Computing & AI Workbook 1 (Scratch)')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\computing-ai-workbook-1-scratch-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "button_text": "\u2212",
+                        "cart_items_count": 0,
+                        "cart_item_handles": [],
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\computing-ai-workbook-1-scratch-check-45-add-to-cart.png"
+                    },
+                    "explanation": "Add to Cart button operates ('\u2212'). Added 0 item(s) to cart."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH77uDMMr3DEruhMDaN0Gy%2Fen-in%3F_r%3DAQABF8gNJOIrYsuQma5_8h-CnhUKzWKq_cG5rhae627sI7c%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\computing-ai-workbook-1-scratch-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": "https://kinq5t-q5.myshopify.com/collections/books",
+                        "card_found": true,
+                        "card_href": "/products/computing-ai-workbook-1-scratch",
+                        "has_image": true,
+                        "has_price": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\computing-ai-workbook-1-scratch-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/books' (link: '/products/computing-ai-workbook-1-scratch')."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "Computing & AI Workbook 2 (Scratch)": {
+            "product_name": "Computing & AI Workbook 2 (Scratch)",
+            "product_id": "gid://shopify/Product/15133526556832",
+            "handle": "computing-ai-workbook-2-scratch",
+            "url": "https://kinq5t-q5.myshopify.com/products/computing-ai-workbook-2-scratch",
+            "category": "Books",
+            "verified_at": "2026-09-22T10:38:09.202892",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/computing-ai-workbook-2-scratch",
+                        "page_title": "Computing & AI Workbook 2 (Scratch) \u2013 KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\computing-ai-workbook-2-scratch-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'Computing & AI Workbook 2 (Scratch) \u2013 KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "Computing & AI Workbook 2 (Scratch)"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('Computing & AI Workbook 2 (Scratch)')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\computing-ai-workbook-2-scratch-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "button_text": "\u2212",
+                        "cart_items_count": 0,
+                        "cart_item_handles": [],
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\computing-ai-workbook-2-scratch-check-45-add-to-cart.png"
+                    },
+                    "explanation": "Add to Cart button operates ('\u2212'). Added 0 item(s) to cart."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH77vs9vnhfoAAneBZXcsG%2Fen-in%3F_r%3DAQAB41VqjzCILDf9qR59WrrPHjJohGMMIjT1L82lYuCq1lU%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\computing-ai-workbook-2-scratch-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": "https://kinq5t-q5.myshopify.com/collections/books",
+                        "card_found": true,
+                        "card_href": "/products/computing-ai-workbook-2-scratch",
+                        "has_image": true,
+                        "has_price": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\computing-ai-workbook-2-scratch-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/books' (link: '/products/computing-ai-workbook-2-scratch')."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "Computing & AI Workbook 3 (Scratch)": {
+            "product_name": "Computing & AI Workbook 3 (Scratch)",
+            "product_id": "gid://shopify/Product/15133537796256",
+            "handle": "computing-ai-workbook-3-scratch",
+            "url": "https://kinq5t-q5.myshopify.com/products/computing-ai-workbook-3-scratch",
+            "category": "Books",
+            "verified_at": "2026-09-22T10:38:24.406493",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/computing-ai-workbook-3-scratch",
+                        "page_title": "Computing & AI Workbook 3 (Scratch) \u2013 KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\computing-ai-workbook-3-scratch-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'Computing & AI Workbook 3 (Scratch) \u2013 KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "Computing & AI Workbook 3 (Scratch)"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('Computing & AI Workbook 3 (Scratch)')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\computing-ai-workbook-3-scratch-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "button_text": "\u2212",
+                        "cart_items_count": 0,
+                        "cart_item_handles": [],
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\computing-ai-workbook-3-scratch-check-45-add-to-cart.png"
+                    },
+                    "explanation": "Add to Cart button operates ('\u2212'). Added 0 item(s) to cart."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH77xSfqwnki81Olahxyzs%2Fen-in%3F_r%3DAQABPH_KDJhbj9NT3looHAE-FrwDS7mF-A11PhT2DnlceRM%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\computing-ai-workbook-3-scratch-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": "https://kinq5t-q5.myshopify.com/collections/books",
+                        "card_found": true,
+                        "card_href": "/products/computing-ai-workbook-3-scratch",
+                        "has_image": true,
+                        "has_price": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\computing-ai-workbook-3-scratch-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/books' (link: '/products/computing-ai-workbook-3-scratch')."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "Computing & AI (Scratch)": {
+            "product_name": "Computing & AI (Scratch)",
+            "product_id": "gid://shopify/Product/15133544972448",
+            "handle": "computing-ai-scratch",
+            "url": "https://kinq5t-q5.myshopify.com/products/computing-ai-scratch",
+            "category": "Books",
+            "verified_at": "2026-09-22T10:38:39.569299",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/computing-ai-scratch",
+                        "page_title": "Computing & AI (Scratch) \u2013 KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\computing-ai-scratch-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'Computing & AI (Scratch) \u2013 KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "Computing & AI Workbook Series (Scratch)"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('Computing & AI Workbook Series (Scratch)')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\computing-ai-scratch-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "button_text": "Add the series to cart",
+                        "cart_items_count": 1,
+                        "cart_item_handles": [
+                            "computing-ai-scratch"
+                        ],
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\computing-ai-scratch-check-45-add-to-cart.png"
+                    },
+                    "explanation": "Add to Cart button operates ('Add the series to cart'). Added 1 item(s) to cart."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH77zRCC6G6tmPwKG5wELs%2Fen-in%3F_r%3DAQAB5ujIYnai4PhO8EjPeqst0UcjtREtviCEojWov6HD3o4%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\computing-ai-scratch-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": "https://kinq5t-q5.myshopify.com/collections/books",
+                        "card_found": true,
+                        "card_href": "/products/computing-ai-scratch",
+                        "has_image": true,
+                        "has_price": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\computing-ai-scratch-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/books' (link: '/products/computing-ai-scratch')."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "Bristle Bot Kit": {
+            "product_name": "Bristle Bot Kit",
+            "product_id": "gid://shopify/Product/15139113664672",
+            "handle": "bristle-bot-kit",
+            "url": "https://kinq5t-q5.myshopify.com/products/bristle-bot-kit",
+            "category": "Unknown",
+            "verified_at": "2026-09-22T10:38:58.653366",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 404,
+                        "final_url": "https://shop.kiddypi.com/products/bristle-bot-kit",
+                        "page_title": "404 Not Found \u2013 KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\bristle-bot-kit-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL failed with status 404 or title '404 Not Found \u2013 KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "error": "Page failed to load"
+                    },
+                    "explanation": "Page failed to load so H1 could not be verified."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\bristle-bot-kit-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile render had overflow or missing components."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": false
+                    },
+                    "explanation": "Add to Cart button not found or disabled on product page."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "NOT_VERIFIABLE",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": false
+                    },
+                    "explanation": "Buy It Now / Dynamic checkout button not present in theme template."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": null,
+                        "card_found": false,
+                        "card_href": null,
+                        "has_image": false,
+                        "has_price": false,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\bristle-bot-kit-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card for 'bristle-bot-kit' not found on candidate collection pages."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "FAIL",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "DRAFT"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "FAIL",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "DRAFT"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "Scratch Programming for Kids - Level 1": {
+            "product_name": "Scratch Programming for Kids - Level 1",
+            "product_id": "gid://shopify/Product/15185087889568",
+            "handle": "scratch-programming-for-kids-level-1",
+            "url": "https://kinq5t-q5.myshopify.com/products/scratch-programming-for-kids-level-1",
+            "category": "Courses",
+            "verified_at": "2026-09-22T10:39:11.670906",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/scratch-programming-for-kids-level-1",
+                        "page_title": "Scratch Programming for Kids - Level 1 \u2013 KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\scratch-programming-for-kids-level-1-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'Scratch Programming for Kids - Level 1 \u2013 KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 2,
+                        "h1_texts": [
+                            "Scratch Programming for Kids - Level 1",
+                            "Learn Coding Through Games, Stories & Animations"
+                        ]
+                    },
+                    "explanation": "Found 2 H1 headers."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\scratch-programming-for-kids-level-1-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "button_text": "\u2212",
+                        "cart_items_count": 0,
+                        "cart_item_handles": [],
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\scratch-programming-for-kids-level-1-check-45-add-to-cart.png"
+                    },
+                    "explanation": "Add to Cart button operates ('\u2212'). Added 0 item(s) to cart."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH782TJO9Yg92DRBROXFpM%2Fen-in%3F_r%3DAQAB4yB0NNeC8aUYq4umLybUcvNvTaXhqj949vaBjAxfLx8%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\scratch-programming-for-kids-level-1-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": "https://kinq5t-q5.myshopify.com/collections/courses",
+                        "card_found": true,
+                        "card_href": "/products/scratch-programming-for-kids-level-1",
+                        "has_image": false,
+                        "has_price": false,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\scratch-programming-for-kids-level-1-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/courses' (link: '/products/scratch-programming-for-kids-level-1')."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "Microbit Maker Kit": {
+            "product_name": "Microbit Maker Kit",
+            "product_id": "gid://shopify/Product/15755776524448",
+            "handle": "kiddypi-micro-bit-beginner-stem-kit-learn-coding-electronics-sensors-through-10-projects",
+            "url": "https://kinq5t-q5.myshopify.com/products/kiddypi-micro-bit-beginner-stem-kit-learn-coding-electronics-sensors-through-10-projects",
+            "category": "STEM Kits (diy-kits)",
+            "verified_at": "2026-09-22T10:39:27.533359",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/kiddypi-micro-bit-beginner-stem-kit-learn-coding-electronics-sensors-through-10-projects",
+                        "page_title": "micro:bit Beginner STEM Kit for Kids | Coding & Electronics Learning Kit | KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-micro-bit-beginner-stem-kit-learn-coding-electronics-sensors-through-10-projects-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'micro:bit Beginner STEM Kit for Kids | Coding & Electronics Learning Kit | KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "Microbit Maker Kit"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('Microbit Maker Kit')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-micro-bit-beginner-stem-kit-learn-coding-electronics-sensors-through-10-projects-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "button_text": "\u2212",
+                        "cart_items_count": 0,
+                        "cart_item_handles": [],
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-micro-bit-beginner-stem-kit-learn-coding-electronics-sensors-through-10-projects-check-45-add-to-cart.png"
+                    },
+                    "explanation": "Add to Cart button operates ('\u2212'). Added 0 item(s) to cart."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH784yV7edLFjYQNzzCKTU%2Fen-in%3F_r%3DAQABjJDZuhZ57Ye5Xz4AVRy1VIKfDCQXo44ykapYJCXumOY%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-micro-bit-beginner-stem-kit-learn-coding-electronics-sensors-through-10-projects-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": "https://kinq5t-q5.myshopify.com/collections/all",
+                        "card_found": true,
+                        "card_href": "/products/kiddypi-engineer-the-future-t-shirt-stem-robotics-cotton-t-shirt-for-young-makers",
+                        "has_image": true,
+                        "has_price": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-micro-bit-beginner-stem-kit-learn-coding-electronics-sensors-through-10-projects-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/all' (link: '/products/kiddypi-engineer-the-future-t-shirt-stem-robotics-cotton-t-shirt-for-young-makers')."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "Arduino Robotics Kit": {
+            "product_name": "Arduino Robotics Kit",
+            "product_id": "gid://shopify/Product/15756753305760",
+            "handle": "kiddypi-arduino-robotics-kit-50-robotics-electronics-coding-projects-for-kids-and-beginners",
+            "url": "https://kinq5t-q5.myshopify.com/products/kiddypi-arduino-robotics-kit-50-robotics-electronics-coding-projects-for-kids-and-beginners",
+            "category": "STEM Kits (diy-kits)",
+            "verified_at": "2026-09-22T10:39:53.583860",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/kiddypi-arduino-robotics-kit-50-robotics-electronics-coding-projects-for-kids-and-beginners",
+                        "page_title": "Arduino Robotics Kit for Kids | 50+ STEM & Coding Projects | KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-arduino-robotics-kit-50-robotics-electronics-coding-projects-for-kids-and-beginners-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'Arduino Robotics Kit for Kids | 50+ STEM & Coding Projects | KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "Arduino Robotics Kit"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('Arduino Robotics Kit')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-arduino-robotics-kit-50-robotics-electronics-coding-projects-for-kids-and-beginners-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "button_text": "\u2212",
+                        "cart_items_count": 0,
+                        "cart_item_handles": [],
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-arduino-robotics-kit-50-robotics-electronics-coding-projects-for-kids-and-beginners-check-45-add-to-cart.png"
+                    },
+                    "explanation": "Add to Cart button operates ('\u2212'). Added 0 item(s) to cart."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH786tpRkgcOrp2eGzbhB6%2Fen-in%3F_r%3DAQABvy02iQfZu_fYeTYirOTTHgpJzqQniVFwyDLG6IgJYew%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-arduino-robotics-kit-50-robotics-electronics-coding-projects-for-kids-and-beginners-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": "https://kinq5t-q5.myshopify.com/collections/all",
+                        "card_found": true,
+                        "card_href": "/products/kiddypi-arduino-robotics-kit-50-robotics-electronics-coding-projects-for-kids-and-beginners",
+                        "has_image": true,
+                        "has_price": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-arduino-robotics-kit-50-robotics-electronics-coding-projects-for-kids-and-beginners-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/all' (link: '/products/kiddypi-arduino-robotics-kit-50-robotics-electronics-coding-projects-for-kids-and-beginners')."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "KiddyPi Circuit Quest \u2013 5-in-1 Electronics STEM Kit for Kids": {
+            "product_name": "KiddyPi Circuit Quest \u2013 5-in-1 Electronics STEM Kit for Kids",
+            "product_id": "gid://shopify/Product/15761222402208",
+            "handle": "kiddypi-circuit-quest-5-in-1-electronics-stem-kit-for-kids",
+            "url": "https://kinq5t-q5.myshopify.com/products/kiddypi-circuit-quest-5-in-1-electronics-stem-kit-for-kids",
+            "category": "STEM Kits (diy-kits)",
+            "verified_at": "2026-09-22T10:40:11.291160",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/kiddypi-circuit-quest-5-in-1-electronics-stem-kit-for-kids",
+                        "page_title": "KiddyPi Circuit Quest 5-in-1 Electronics STEM Kit for Kids",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-circuit-quest-5-in-1-electronics-stem-kit-for-kids-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'KiddyPi Circuit Quest 5-in-1 Electronics STEM Kit for Kids'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "KiddyPi Circuit Quest \u2013 5-in-1 Electronics STEM Kit for Kids"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('KiddyPi Circuit Quest \u2013 5-in-1 Electronics STEM Kit for Kids')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-circuit-quest-5-in-1-electronics-stem-kit-for-kids-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "button_text": "\u2212",
+                        "cart_items_count": 0,
+                        "cart_item_handles": [],
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-circuit-quest-5-in-1-electronics-stem-kit-for-kids-check-45-add-to-cart.png"
+                    },
+                    "explanation": "Add to Cart button operates ('\u2212'). Added 0 item(s) to cart."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH788kEICfmjhb1Y0KB34O%2Fen-in%3F_r%3DAQABt_TaHmYBJ4C5EhSOvsRosnvTXPe5QyfoGiTzcGvrC3Q%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-circuit-quest-5-in-1-electronics-stem-kit-for-kids-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": "https://kinq5t-q5.myshopify.com/collections/all",
+                        "card_found": true,
+                        "card_href": "/products/kiddypi-circuit-quest-5-in-1-electronics-stem-kit-for-kids",
+                        "has_image": true,
+                        "has_price": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-circuit-quest-5-in-1-electronics-stem-kit-for-kids-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/all' (link: '/products/kiddypi-circuit-quest-5-in-1-electronics-stem-kit-for-kids')."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "KiddyPi Frog Bot DIY Robotics Kit | Build Your First Moving Robot": {
+            "product_name": "KiddyPi Frog Bot DIY Robotics Kit | Build Your First Moving Robot",
+            "product_id": "gid://shopify/Product/15767726948512",
+            "handle": "kiddypi-frog-bot-diy-robotics-kit-build-your-first-moving-robot",
+            "url": "https://kinq5t-q5.myshopify.com/products/kiddypi-frog-bot-diy-robotics-kit-build-your-first-moving-robot",
+            "category": "STEM Kits (diy-kits)",
+            "verified_at": "2026-09-22T10:40:30.299737",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/kiddypi-frog-bot-diy-robotics-kit-build-your-first-moving-robot",
+                        "page_title": "Frog Bot DIY Robotics Kit for Kids | Beginner STEM Robot Kit | KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-frog-bot-diy-robotics-kit-build-your-first-moving-robot-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'Frog Bot DIY Robotics Kit for Kids | Beginner STEM Robot Kit | KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "KiddyPi Frog Bot DIY Robotics Kit | Build Your First Moving Robot"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('KiddyPi Frog Bot DIY Robotics Kit | Build Your First Moving Robot')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-frog-bot-diy-robotics-kit-build-your-first-moving-robot-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "button_text": "\u2212",
+                        "cart_items_count": 0,
+                        "cart_item_handles": [],
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-frog-bot-diy-robotics-kit-build-your-first-moving-robot-check-45-add-to-cart.png"
+                    },
+                    "explanation": "Add to Cart button operates ('\u2212'). Added 0 item(s) to cart."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH78AmbJFZN7nyrEeo1r8e%2Fen-in%3F_r%3DAQABiTs-RuCGcD8UzpY3wang5vnP-qbOwEKwaQm5hAmcfFE%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-frog-bot-diy-robotics-kit-build-your-first-moving-robot-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": "https://kinq5t-q5.myshopify.com/collections/all",
+                        "card_found": true,
+                        "card_href": "/products/kiddypi-frog-bot-diy-robotics-kit-build-your-first-moving-robot",
+                        "has_image": true,
+                        "has_price": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-frog-bot-diy-robotics-kit-build-your-first-moving-robot-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/all' (link: '/products/kiddypi-frog-bot-diy-robotics-kit-build-your-first-moving-robot')."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "KiddyPi Digital Diya DIY STEM Kit | Learn Electronics Through a Safe Festival Craft Activity": {
+            "product_name": "KiddyPi Digital Diya DIY STEM Kit | Learn Electronics Through a Safe Festival Craft Activity",
+            "product_id": "gid://shopify/Product/15767758635168",
+            "handle": "kiddypi-digital-diya-diy-stem-kit-learn-electronics-through-a-safe-festival-craft-activity",
+            "url": "https://kinq5t-q5.myshopify.com/products/kiddypi-digital-diya-diy-stem-kit-learn-electronics-through-a-safe-festival-craft-activity",
+            "category": "STEM Kits (diy-kits)",
+            "verified_at": "2026-09-22T10:40:48.252412",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/kiddypi-digital-diya-diy-stem-kit-learn-electronics-through-a-safe-festival-craft-activity",
+                        "page_title": "Digital Diya DIY STEM Kit for Kids | Festival Electronics Project | KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-digital-diya-diy-stem-kit-learn-electronics-through-a-safe-festival-craft-activity-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'Digital Diya DIY STEM Kit for Kids | Festival Electronics Project | KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "KiddyPi Digital Diya DIY STEM Kit | Learn Electronics Through a Safe Festival Craft Activity"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('KiddyPi Digital Diya DIY STEM Kit | Learn Electronics Through a Safe Festival Craft Activity')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-digital-diya-diy-stem-kit-learn-electronics-through-a-safe-festival-craft-activity-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "button_text": "\u2212",
+                        "cart_items_count": 0,
+                        "cart_item_handles": [],
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-digital-diya-diy-stem-kit-learn-electronics-through-a-safe-festival-craft-activity-check-45-add-to-cart.png"
+                    },
+                    "explanation": "Add to Cart button operates ('\u2212'). Added 0 item(s) to cart."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH78CZg3iq62mASXUXkwCK%2Fen-in%3F_r%3DAQABZFFW0VyJj1qER2JTObZpEUDT0kc6u30t2ro25iGT2T8%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-digital-diya-diy-stem-kit-learn-electronics-through-a-safe-festival-craft-activity-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": "https://kinq5t-q5.myshopify.com/collections/all",
+                        "card_found": true,
+                        "card_href": "/products/kiddypi-digital-diya-diy-stem-kit-learn-electronics-through-a-safe-festival-craft-activity",
+                        "has_image": true,
+                        "has_price": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-digital-diya-diy-stem-kit-learn-electronics-through-a-safe-festival-craft-activity-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/all' (link: '/products/kiddypi-digital-diya-diy-stem-kit-learn-electronics-through-a-safe-festival-craft-activity')."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "KiddyPi Smart Dustbin STEM Kit | Build an Automatic Sensor-Based Dustbin with Arduino": {
+            "product_name": "KiddyPi Smart Dustbin STEM Kit | Build an Automatic Sensor-Based Dustbin with Arduino",
+            "product_id": "gid://shopify/Product/15774265442464",
+            "handle": "kiddypi-smart-dustbin-stem-kit-build-an-automatic-sensor-based-dustbin-with-arduino",
+            "url": "https://kinq5t-q5.myshopify.com/products/kiddypi-smart-dustbin-stem-kit-build-an-automatic-sensor-based-dustbin-with-arduino",
+            "category": "STEM Kits (diy-kits)",
+            "verified_at": "2026-09-22T10:41:06.291165",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/kiddypi-smart-dustbin-stem-kit-build-an-automatic-sensor-based-dustbin-with-arduino",
+                        "page_title": "Smart Dustbin Arduino STEM Kit for Kids | DIY Sensor Automation Project | KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-smart-dustbin-stem-kit-build-an-automatic-sensor-based-dustbin-with-arduino-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'Smart Dustbin Arduino STEM Kit for Kids | DIY Sensor Automation Project | KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "KiddyPi Smart Dustbin STEM Kit | Build an Automatic Sensor-Based Dustbin with Arduino"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('KiddyPi Smart Dustbin STEM Kit | Build an Automatic Sensor-Based Dustbin with Arduino')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-smart-dustbin-stem-kit-build-an-automatic-sensor-based-dustbin-with-arduino-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "button_text": "\u2212",
+                        "cart_items_count": 0,
+                        "cart_item_handles": [],
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-smart-dustbin-stem-kit-build-an-automatic-sensor-based-dustbin-with-arduino-check-45-add-to-cart.png"
+                    },
+                    "explanation": "Add to Cart button operates ('\u2212'). Added 0 item(s) to cart."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH78EZNHDJKScctPyRHeSq%2Fen-in%3F_r%3DAQAB6gBWjmaK_4lMbpRpnGBcZjf1ChmLGNDJoAX5OGT5zeU%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-smart-dustbin-stem-kit-build-an-automatic-sensor-based-dustbin-with-arduino-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": "https://kinq5t-q5.myshopify.com/collections/all",
+                        "card_found": true,
+                        "card_href": "/products/kiddypi-smart-dustbin-stem-kit-build-an-automatic-sensor-based-dustbin-with-arduino",
+                        "has_image": true,
+                        "has_price": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-smart-dustbin-stem-kit-build-an-automatic-sensor-based-dustbin-with-arduino-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/all' (link: '/products/kiddypi-smart-dustbin-stem-kit-build-an-automatic-sensor-based-dustbin-with-arduino')."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "KiddyPi Smart Street Light Kit | DIY Automatic Street Light STEM Project for Kids": {
+            "product_name": "KiddyPi Smart Street Light Kit | DIY Automatic Street Light STEM Project for Kids",
+            "product_id": "gid://shopify/Product/15774267736224",
+            "handle": "kiddypi-smart-street-light-kit-diy-automatic-street-light-stem-project-for-kids",
+            "url": "https://kinq5t-q5.myshopify.com/products/kiddypi-smart-street-light-kit-diy-automatic-street-light-stem-project-for-kids",
+            "category": "STEM Kits (diy-kits)",
+            "verified_at": "2026-09-22T10:41:26.491947",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/kiddypi-smart-street-light-kit-diy-automatic-street-light-stem-project-for-kids",
+                        "page_title": "Smart Street Light STEM Kit | DIY Electronics Project for Kids | KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-smart-street-light-kit-diy-automatic-street-light-stem-project-for-kids-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'Smart Street Light STEM Kit | DIY Electronics Project for Kids | KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "KiddyPi Smart Street Light Kit | DIY Automatic Street Light STEM Project for Kids"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('KiddyPi Smart Street Light Kit | DIY Automatic Street Light STEM Project for Kids')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-smart-street-light-kit-diy-automatic-street-light-stem-project-for-kids-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "button_text": "\u2212",
+                        "cart_items_count": 0,
+                        "cart_item_handles": [],
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-smart-street-light-kit-diy-automatic-street-light-stem-project-for-kids-check-45-add-to-cart.png"
+                    },
+                    "explanation": "Add to Cart button operates ('\u2212'). Added 0 item(s) to cart."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH78GdyMaumtxDhqSyEhro%2Fen-in%3F_r%3DAQABHL47XZwq16maL3rPd6Px8k_dIyhc555cqPogWeXu4LA%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-smart-street-light-kit-diy-automatic-street-light-stem-project-for-kids-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": "https://kinq5t-q5.myshopify.com/collections/all",
+                        "card_found": true,
+                        "card_href": "/products/kiddypi-arduino-robotics-kit-50-robotics-electronics-coding-projects-for-kids-and-beginners",
+                        "has_image": true,
+                        "has_price": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-smart-street-light-kit-diy-automatic-street-light-stem-project-for-kids-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/all' (link: '/products/kiddypi-arduino-robotics-kit-50-robotics-electronics-coding-projects-for-kids-and-beginners')."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "KiddyPi Door Alarm Kit | DIY Security Alarm STEM Project for Kids": {
+            "product_name": "KiddyPi Door Alarm Kit | DIY Security Alarm STEM Project for Kids",
+            "product_id": "gid://shopify/Product/15774294999200",
+            "handle": "kiddypi-door-alarm-kit-diy-security-alarm-stem-project-for-kids",
+            "url": "https://kinq5t-q5.myshopify.com/products/kiddypi-door-alarm-kit-diy-security-alarm-stem-project-for-kids",
+            "category": "STEM Kits (diy-kits)",
+            "verified_at": "2026-09-22T10:41:46.057155",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/kiddypi-door-alarm-kit-diy-security-alarm-stem-project-for-kids",
+                        "page_title": "Door Alarm DIY STEM Kit | Electronics Security Project for Kids | KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-door-alarm-kit-diy-security-alarm-stem-project-for-kids-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'Door Alarm DIY STEM Kit | Electronics Security Project for Kids | KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "KiddyPi Door Alarm Kit | DIY Security Alarm STEM Project for Kids"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('KiddyPi Door Alarm Kit | DIY Security Alarm STEM Project for Kids')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-door-alarm-kit-diy-security-alarm-stem-project-for-kids-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "button_text": "\u2212",
+                        "cart_items_count": 0,
+                        "cart_item_handles": [],
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-door-alarm-kit-diy-security-alarm-stem-project-for-kids-check-45-add-to-cart.png"
+                    },
+                    "explanation": "Add to Cart button operates ('\u2212'). Added 0 item(s) to cart."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH78IevFNGrLRCHN184O8q%2Fen-in%3F_r%3DAQABrLQTyffvJMP3hBi6mCRcSNIav-k1_VwMlhAPOpBwAX4%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-door-alarm-kit-diy-security-alarm-stem-project-for-kids-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": "https://kinq5t-q5.myshopify.com/collections/all",
+                        "card_found": true,
+                        "card_href": "/products/kiddypi-door-alarm-kit-diy-security-alarm-stem-project-for-kids",
+                        "has_image": true,
+                        "has_price": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-door-alarm-kit-diy-security-alarm-stem-project-for-kids-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/all' (link: '/products/kiddypi-door-alarm-kit-diy-security-alarm-stem-project-for-kids')."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "Arduino Uno R3 (SMD) Development Board | ATmega328P Microcontroller for Robotics & STEM Projects": {
+            "product_name": "Arduino Uno R3 (SMD) Development Board | ATmega328P Microcontroller for Robotics & STEM Projects",
+            "product_id": "gid://shopify/Product/15781385076896",
+            "handle": "arduino-uno-r3-smd-development-board-atmega328p-microcontroller-for-robotics-stem-projects",
+            "url": "https://kinq5t-q5.myshopify.com/products/arduino-uno-r3-smd-development-board-atmega328p-microcontroller-for-robotics-stem-projects",
+            "category": "STEM Kits (diy-kits)",
+            "verified_at": "2026-09-22T10:42:05.454592",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/arduino-uno-r3-smd-development-board-atmega328p-microcontroller-for-robotics-stem-projects",
+                        "page_title": "Arduino Uno R3 SMD Development Board | ATmega328P | KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\arduino-uno-r3-smd-development-board-atmega328p-microcontroller-for-robotics-stem-projects-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'Arduino Uno R3 SMD Development Board | ATmega328P | KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "Arduino Uno R3 (SMD) Development Board | ATmega328P Microcontroller for Robotics & STEM Projects"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('Arduino Uno R3 (SMD) Development Board | ATmega328P Microcontroller for Robotics & STEM Projects')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\arduino-uno-r3-smd-development-board-atmega328p-microcontroller-for-robotics-stem-projects-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "button_text": "\u2212",
+                        "cart_items_count": 0,
+                        "cart_item_handles": [],
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\arduino-uno-r3-smd-development-board-atmega328p-microcontroller-for-robotics-stem-projects-check-45-add-to-cart.png"
+                    },
+                    "explanation": "Add to Cart button operates ('\u2212'). Added 0 item(s) to cart."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH78KekVfDUqTVaYZMjct2%2Fen-in%3F_r%3DAQAB3U02n9VEq64-mYc5K8fCsHumfP07V7IrzTAp8FkkynU%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\arduino-uno-r3-smd-development-board-atmega328p-microcontroller-for-robotics-stem-projects-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": "https://kinq5t-q5.myshopify.com/collections/electronics",
+                        "card_found": true,
+                        "card_href": "/products/arduino-uno-r3-smd-development-board-atmega328p-microcontroller-for-robotics-stem-projects",
+                        "has_image": true,
+                        "has_price": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\arduino-uno-r3-smd-development-board-atmega328p-microcontroller-for-robotics-stem-projects-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/electronics' (link: '/products/arduino-uno-r3-smd-development-board-atmega328p-microcontroller-for-robotics-stem-projects')."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "DC BO Geared Motor 300 RPM | High-Torque Motor for Robotics & DIY Projects": {
+            "product_name": "DC BO Geared Motor 300 RPM | High-Torque Motor for Robotics & DIY Projects",
+            "product_id": "gid://shopify/Product/15784250966176",
+            "handle": "dc-bo-geared-motor-300-rpm-high-torque-motor-for-robotics-diy-projects",
+            "url": "https://kinq5t-q5.myshopify.com/products/dc-bo-geared-motor-300-rpm-high-torque-motor-for-robotics-diy-projects",
+            "category": "Unknown",
+            "verified_at": "2026-09-22T10:42:20.988212",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 404,
+                        "final_url": "https://shop.kiddypi.com/products/dc-bo-geared-motor-300-rpm-high-torque-motor-for-robotics-diy-projects",
+                        "page_title": "404 Not Found \u2013 KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\dc-bo-geared-motor-300-rpm-high-torque-motor-for-robotics-diy-projects-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL failed with status 404 or title '404 Not Found \u2013 KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "error": "Page failed to load"
+                    },
+                    "explanation": "Page failed to load so H1 could not be verified."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\dc-bo-geared-motor-300-rpm-high-torque-motor-for-robotics-diy-projects-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile render had overflow or missing components."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": false
+                    },
+                    "explanation": "Add to Cart button not found or disabled on product page."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "NOT_VERIFIABLE",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": false
+                    },
+                    "explanation": "Buy It Now / Dynamic checkout button not present in theme template."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": null,
+                        "card_found": false,
+                        "card_href": null,
+                        "has_image": false,
+                        "has_price": false,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\dc-bo-geared-motor-300-rpm-high-torque-motor-for-robotics-diy-projects-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card for 'dc-bo-geared-motor-300-rpm-high-torque-motor-for-robotics-diy-projects' not found on candidate collection pages."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "FAIL",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "DRAFT"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "FAIL",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "DRAFT"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "Arduino for Beginners | Learn Electronics, Sensors & Programming Through Hands-on Projects": {
+            "product_name": "Arduino for Beginners | Learn Electronics, Sensors & Programming Through Hands-on Projects",
+            "product_id": "gid://shopify/Product/15784437579936",
+            "handle": "arduino-for-beginners-learn-electronics-sensors-programming-through-hands-on-projects",
+            "url": "https://kinq5t-q5.myshopify.com/products/arduino-for-beginners-learn-electronics-sensors-programming-through-hands-on-projects",
+            "category": "Courses",
+            "verified_at": "2026-09-22T10:42:34.987000",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/arduino-for-beginners-learn-electronics-sensors-programming-through-hands-on-projects",
+                        "page_title": "Arduino for Beginners | Learn Electronics, Sensors & Programming Throu \u2013 KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\arduino-for-beginners-learn-electronics-sensors-programming-through-hands-on-projects-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'Arduino for Beginners | Learn Electronics, Sensors & Programming Throu \u2013 KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "Arduino for Beginners | Learn Electronics, Sensors & Programming Through Hands-on Projects"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('Arduino for Beginners | Learn Electronics, Sensors & Programming Through Hands-on Projects')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\arduino-for-beginners-learn-electronics-sensors-programming-through-hands-on-projects-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "button_text": "Add to cart",
+                        "cart_items_count": 1,
+                        "cart_item_handles": [
+                            "arduino-for-beginners-learn-electronics-sensors-programming-through-hands-on-projects"
+                        ],
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\arduino-for-beginners-learn-electronics-sensors-programming-through-hands-on-projects-check-45-add-to-cart.png"
+                    },
+                    "explanation": "Add to Cart button operates ('Add to cart'). Added 1 item(s) to cart."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH78Nqf4zv3EwfMxjYL3ci%2Fen-in%3F_r%3DAQABO6E0tn07Cj0LsVsbrjniQ6Zx7msmIazpAEA9fhZJ47s%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\arduino-for-beginners-learn-electronics-sensors-programming-through-hands-on-projects-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": "https://kinq5t-q5.myshopify.com/collections/courses",
+                        "card_found": true,
+                        "card_href": "/products/arduino-for-beginners-learn-electronics-sensors-programming-through-hands-on-projects",
+                        "has_image": false,
+                        "has_price": false,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\arduino-for-beginners-learn-electronics-sensors-programming-through-hands-on-projects-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/courses' (link: '/products/arduino-for-beginners-learn-electronics-sensors-programming-through-hands-on-projects')."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "KiddyPi Engineer the Future T-Shirt | STEM Robotics Cotton T-Shirt for Young Makers": {
+            "product_name": "KiddyPi Engineer the Future T-Shirt | STEM Robotics Cotton T-Shirt for Young Makers",
+            "product_id": "gid://shopify/Product/15791924281504",
+            "handle": "kiddypi-engineer-the-future-t-shirt-stem-robotics-cotton-t-shirt-for-young-makers",
+            "url": "https://kinq5t-q5.myshopify.com/products/kiddypi-engineer-the-future-t-shirt-stem-robotics-cotton-t-shirt-for-young-makers",
+            "category": "Apparel",
+            "verified_at": "2026-09-22T10:42:51.676658",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/kiddypi-engineer-the-future-t-shirt-stem-robotics-cotton-t-shirt-for-young-makers",
+                        "page_title": "Engineer the Future STEM T-Shirt for Kids | KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-engineer-the-future-t-shirt-stem-robotics-cotton-t-shirt-for-young-makers-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'Engineer the Future STEM T-Shirt for Kids | KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "KiddyPi Engineer the Future T-Shirt | STEM Robotics Cotton T-Shirt for Young Makers"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('KiddyPi Engineer the Future T-Shirt | STEM Robotics Cotton T-Shirt for Young Makers')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-engineer-the-future-t-shirt-stem-robotics-cotton-t-shirt-for-young-makers-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "button_text": "\u2212",
+                        "cart_items_count": 0,
+                        "cart_item_handles": [],
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-engineer-the-future-t-shirt-stem-robotics-cotton-t-shirt-for-young-makers-check-45-add-to-cart.png"
+                    },
+                    "explanation": "Add to Cart button operates ('\u2212'). Added 0 item(s) to cart."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH78PYiHmdn2hiPFmwEGDk%2Fen-in%3F_r%3DAQAB7jaR8pqtYZDMH10-AsQ6JZPKqfiGS1p2tR4vXY0TJ5M%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-engineer-the-future-t-shirt-stem-robotics-cotton-t-shirt-for-young-makers-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": "https://kinq5t-q5.myshopify.com/collections/apparels",
+                        "card_found": true,
+                        "card_href": "/products/kiddypi-engineer-the-future-t-shirt-stem-robotics-cotton-t-shirt-for-young-makers",
+                        "has_image": true,
+                        "has_price": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-engineer-the-future-t-shirt-stem-robotics-cotton-t-shirt-for-young-makers-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/apparels' (link: '/products/kiddypi-engineer-the-future-t-shirt-stem-robotics-cotton-t-shirt-for-young-makers')."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "KiddyPi Micro:bit + Scratch Combo | Learn Block Coding and Physical Computing with Kit + Guided Course": {
+            "product_name": "KiddyPi Micro:bit + Scratch Combo | Learn Block Coding and Physical Computing with Kit + Guided Course",
+            "product_id": "gid://shopify/Product/15792040411296",
+            "handle": "kiddypi-micro-bit-scratch-combo-learn-block-coding-and-physical-computing-with-kit-guided-course",
+            "url": "https://kinq5t-q5.myshopify.com/products/kiddypi-micro-bit-scratch-combo-learn-block-coding-and-physical-computing-with-kit-guided-course",
+            "category": "Combo Products",
+            "verified_at": "2026-09-22T10:43:07.979235",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/kiddypi-micro-bit-scratch-combo-learn-block-coding-and-physical-computing-with-kit-guided-course",
+                        "page_title": "Micro:bit + Scratch Combo STEM Learning Bundle | KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-micro-bit-scratch-combo-learn-block-coding-and-physical-computing-with-kit-guided-course-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'Micro:bit + Scratch Combo STEM Learning Bundle | KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "KiddyPi Micro:bit + Scratch Combo | Learn Block Coding and Physical Computing with Kit + Guided Course"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('KiddyPi Micro:bit + Scratch Combo | Learn Block Coding and Physical Computing with Kit + Guided Course')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-micro-bit-scratch-combo-learn-block-coding-and-physical-computing-with-kit-guided-course-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "button_text": "Get the Combo",
+                        "cart_items_count": 1,
+                        "cart_item_handles": [
+                            "kiddypi-micro-bit-scratch-combo-learn-block-coding-and-physical-computing-with-kit-guided-course"
+                        ],
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-micro-bit-scratch-combo-learn-block-coding-and-physical-computing-with-kit-guided-course-check-45-add-to-cart.png"
+                    },
+                    "explanation": "Add to Cart button operates ('Get the Combo'). Added 1 item(s) to cart."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH78RI8S3MGHFY7uCuzavE%2Fen-in%3F_r%3DAQAB5NvXQsU_9-AxEQbfTN4P96iqx6S02TAzZXi0blufZEw%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-micro-bit-scratch-combo-learn-block-coding-and-physical-computing-with-kit-guided-course-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": "https://kinq5t-q5.myshopify.com/collections/combo-courses",
+                        "card_found": true,
+                        "card_href": "/products/kiddypi-micro-bit-scratch-combo-learn-block-coding-and-physical-computing-with-kit-guided-course",
+                        "has_image": true,
+                        "has_price": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-micro-bit-scratch-combo-learn-block-coding-and-physical-computing-with-kit-guided-course-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/combo-courses' (link: '/products/kiddypi-micro-bit-scratch-combo-learn-block-coding-and-physical-computing-with-kit-guided-course')."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "KiddyPi Space Explorer T-Shirt | STEM-Inspired Kids Apparel for Young Innovators": {
+            "product_name": "KiddyPi Space Explorer T-Shirt | STEM-Inspired Kids Apparel for Young Innovators",
+            "product_id": "gid://shopify/Product/15793068376224",
+            "handle": "kiddypi-space-explorer-t-shirt-stem-inspired-kids-apparel-for-young-innovators",
+            "url": "https://kinq5t-q5.myshopify.com/products/kiddypi-space-explorer-t-shirt-stem-inspired-kids-apparel-for-young-innovators",
+            "category": "Apparel",
+            "verified_at": "2026-09-22T10:43:24.396911",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/kiddypi-space-explorer-t-shirt-stem-inspired-kids-apparel-for-young-innovators",
+                        "page_title": "Space Explorer STEM T-Shirt for Kids | KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-space-explorer-t-shirt-stem-inspired-kids-apparel-for-young-innovators-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'Space Explorer STEM T-Shirt for Kids | KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "KiddyPi Space Explorer T-Shirt | STEM-Inspired Kids Apparel for Young Innovators"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('KiddyPi Space Explorer T-Shirt | STEM-Inspired Kids Apparel for Young Innovators')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-space-explorer-t-shirt-stem-inspired-kids-apparel-for-young-innovators-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "button_text": "\u2212",
+                        "cart_items_count": 0,
+                        "cart_item_handles": [],
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-space-explorer-t-shirt-stem-inspired-kids-apparel-for-young-innovators-check-45-add-to-cart.png"
+                    },
+                    "explanation": "Add to Cart button operates ('\u2212'). Added 0 item(s) to cart."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH78SrJqME4TG5WEwC59bI%2Fen-in%3F_r%3DAQABR3JSzreGxnPSy3N1XwNgtvHWVcDogUXI5lCH__nCgRE%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-space-explorer-t-shirt-stem-inspired-kids-apparel-for-young-innovators-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": "https://kinq5t-q5.myshopify.com/collections/apparels",
+                        "card_found": true,
+                        "card_href": "/products/kiddypi-space-explorer-t-shirt-stem-inspired-kids-apparel-for-young-innovators",
+                        "has_image": true,
+                        "has_price": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-space-explorer-t-shirt-stem-inspired-kids-apparel-for-young-innovators-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/apparels' (link: '/products/kiddypi-space-explorer-t-shirt-stem-inspired-kids-apparel-for-young-innovators')."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "Mission Tiranga: Independence Day STEM Workshop for Kids": {
+            "product_name": "Mission Tiranga: Independence Day STEM Workshop for Kids",
+            "product_id": "gid://shopify/Product/15811245605024",
+            "handle": "mission-tiranga-independence-day-stem-workshop-for-kids",
+            "url": "https://kinq5t-q5.myshopify.com/products/mission-tiranga-independence-day-stem-workshop-for-kids",
+            "category": "Courses",
+            "verified_at": "2026-09-22T10:43:39.354130",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/mission-tiranga-independence-day-stem-workshop-for-kids",
+                        "page_title": "Mission Tiranga: Independence Day STEM Workshop for Kids \u2013 KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\mission-tiranga-independence-day-stem-workshop-for-kids-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'Mission Tiranga: Independence Day STEM Workshop for Kids \u2013 KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "Mission Tiranga"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('Mission Tiranga')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\mission-tiranga-independence-day-stem-workshop-for-kids-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "NOT_APPLICABLE",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "is_workshop": true
+                    },
+                    "explanation": "Not Applicable \u2014 Workshop products use event registration and do not mandate standard Add to Cart button."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "NOT_VERIFIABLE",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": false
+                    },
+                    "explanation": "Buy It Now / Dynamic checkout button not present in theme template."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "NOT_APPLICABLE",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "is_workshop": true
+                    },
+                    "explanation": "Not Applicable \u2014 Workshop products use event registration and do not mandate standard catalog collection card rendering."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "Microbit and Blockly Programming for Kids \u2013 Level 1": {
+            "product_name": "Microbit and Blockly Programming for Kids \u2013 Level 1",
+            "product_id": "gid://shopify/Product/15814656917664",
+            "handle": "microbit-and-blockly-programming-for-kids-level-1",
+            "url": "https://kinq5t-q5.myshopify.com/products/microbit-and-blockly-programming-for-kids-level-1",
+            "category": "Courses",
+            "verified_at": "2026-09-22T10:43:47.426143",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/microbit-and-blockly-programming-for-kids-level-1",
+                        "page_title": "Microbit and Blockly Programming for Kids \u2013 Level 1 \u2013 KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\microbit-and-blockly-programming-for-kids-level-1-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'Microbit and Blockly Programming for Kids \u2013 Level 1 \u2013 KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "Microbit and Blockly Programming for Kids \u2013 Level 1"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('Microbit and Blockly Programming for Kids \u2013 Level 1')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\microbit-and-blockly-programming-for-kids-level-1-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "button_text": "\u2212",
+                        "cart_items_count": 0,
+                        "cart_item_handles": [],
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\microbit-and-blockly-programming-for-kids-level-1-check-45-add-to-cart.png"
+                    },
+                    "explanation": "Add to Cart button operates ('\u2212'). Added 0 item(s) to cart."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH78VOEcfpwcCEy2QGUh8O%2Fen-in%3F_r%3DAQABsTGfwdkMbXIzrIrmefoEHI2AtDDRI8yn1kZ3_HGLwRc%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\microbit-and-blockly-programming-for-kids-level-1-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": "https://kinq5t-q5.myshopify.com/collections/courses",
+                        "card_found": true,
+                        "card_href": "/products/microbit-and-blockly-programming-for-kids-level-1",
+                        "has_image": false,
+                        "has_price": false,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\microbit-and-blockly-programming-for-kids-level-1-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/courses' (link: '/products/microbit-and-blockly-programming-for-kids-level-1')."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "Web Programming for Kids \u2013 Level 1": {
+            "product_name": "Web Programming for Kids \u2013 Level 1",
+            "product_id": "gid://shopify/Product/15814797459616",
+            "handle": "web-programming-for-kids-level-1",
+            "url": "https://kinq5t-q5.myshopify.com/products/web-programming-for-kids-level-1",
+            "category": "Courses",
+            "verified_at": "2026-09-22T10:44:03.867905",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/web-programming-for-kids-level-1",
+                        "page_title": "Web Programming for Kids \u2013 Level 1 \u2013 KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\web-programming-for-kids-level-1-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'Web Programming for Kids \u2013 Level 1 \u2013 KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 2,
+                        "h1_texts": [
+                            "Web Programming for Kids \u2013 Level 1",
+                            "Web Programming for Kids \u2013 Level 1"
+                        ]
+                    },
+                    "explanation": "Found 2 H1 headers."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\web-programming-for-kids-level-1-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "button_text": "\u2212",
+                        "cart_items_count": 0,
+                        "cart_item_handles": [],
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\web-programming-for-kids-level-1-check-45-add-to-cart.png"
+                    },
+                    "explanation": "Add to Cart button operates ('\u2212'). Added 0 item(s) to cart."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH78X8BmsM5E18sJVEFZg4%2Fen-in%3F_r%3DAQABqVqlJ3BCKoi8F8Wsznqk9KclenXxPTdTxhTmpRpDq7c%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\web-programming-for-kids-level-1-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "collection_url": "https://kinq5t-q5.myshopify.com/collections/courses",
+                        "card_found": true,
+                        "card_href": "/products/web-programming-for-kids-level-1",
+                        "has_image": false,
+                        "has_price": false,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\web-programming-for-kids-level-1-check-47-collection-card.png"
+                    },
+                    "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/courses' (link: '/products/web-programming-for-kids-level-1')."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "KiddyPi Mission Tiranga T-Shirt | Independence Day Space Communication Cotton Tee": {
+            "product_name": "KiddyPi Mission Tiranga T-Shirt | Independence Day Space Communication Cotton Tee",
+            "product_id": "gid://shopify/Product/15832643207328",
+            "handle": "kiddypi-mission-tiranga-t-shirt-independence-day-space-communication-cotton-tee",
+            "url": "https://kinq5t-q5.myshopify.com/products/kiddypi-mission-tiranga-t-shirt-independence-day-space-communication-cotton-tee",
+            "category": "Apparel",
+            "verified_at": "2026-09-22T10:44:20.656248",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/kiddypi-mission-tiranga-t-shirt-independence-day-space-communication-cotton-tee",
+                        "page_title": "KiddyPi Mission Tiranga T-Shirt | Independence Day Space Communication",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-mission-tiranga-t-shirt-independence-day-space-communication-cotton-tee-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'KiddyPi Mission Tiranga T-Shirt | Independence Day Space Communication'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "KiddyPi Mission Tiranga T-Shirt | Independence Day Space Communication Cotton Tee"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('KiddyPi Mission Tiranga T-Shirt | Independence Day Space Communication Cotton Tee')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-mission-tiranga-t-shirt-independence-day-space-communication-cotton-tee-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "NOT_APPLICABLE",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "is_workshop": true
+                    },
+                    "explanation": "Not Applicable \u2014 Workshop products use event registration and do not mandate standard Add to Cart button."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH78YYruC7XQVLQ2vnlWR2%2Fen-in%3F_r%3DAQABK7TvXxQzkq3NBblydQiAD8raxiGNO7UptEYlHK96QJ8%26locale%3Den-IN",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-mission-tiranga-t-shirt-independence-day-space-communication-cotton-tee-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "NOT_APPLICABLE",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "is_workshop": true
+                    },
+                    "explanation": "Not Applicable \u2014 Workshop products use event registration and do not mandate standard catalog collection card rendering."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "AI Tinker Saturdays \u2013 AI Inventor Experience": {
+            "product_name": "AI Tinker Saturdays \u2013 AI Inventor Experience",
+            "product_id": "gid://shopify/Product/15836279341216",
+            "handle": "ai-tinker-saturdays-ai-inventor-experience",
+            "url": "https://kinq5t-q5.myshopify.com/products/ai-tinker-saturdays-ai-inventor-experience",
+            "category": "Courses",
+            "verified_at": "2026-09-22T10:44:31.774699",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 200,
+                        "final_url": "https://shop.kiddypi.com/products/ai-tinker-saturdays-ai-inventor-experience",
+                        "page_title": "AI Tinker Saturdays \u2013 AI Inventor Experience \u2013 KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\ai-tinker-saturdays-ai-inventor-experience-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL returned status 200 with title 'AI Tinker Saturdays \u2013 AI Inventor Experience \u2013 KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "h1_count": 1,
+                        "h1_texts": [
+                            "AI Tinker Saturdays"
+                        ]
+                    },
+                    "explanation": "Found exactly 1 visible H1 header ('AI Tinker Saturdays')."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\ai-tinker-saturdays-ai-inventor-experience-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "NOT_APPLICABLE",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "is_workshop": true
+                    },
+                    "explanation": "Not Applicable \u2014 Workshop products use event registration and do not mandate standard Add to Cart button."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "PASS",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": true,
+                        "checkout_url": "https://shop.kiddypi.com/products/ai-tinker-saturdays-ai-inventor-experience",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\ai-tinker-saturdays-ai-inventor-experience-check-46-buy-now.png"
+                    },
+                    "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/products/ai-tinker-saturdays-ai-inv...')."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "NOT_APPLICABLE",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "is_workshop": true
+                    },
+                    "explanation": "Not Applicable \u2014 Workshop products use event registration and do not mandate standard catalog collection card rendering."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "PASS",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "ACTIVE"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "Mission Tiranga STEM Explorer Workshop": {
+            "product_name": "Mission Tiranga STEM Explorer Workshop",
+            "product_id": "gid://shopify/Product/15844121641120",
+            "handle": "mission-tiranga-stem-explorer-workshop",
+            "url": "https://kinq5t-q5.myshopify.com/products/mission-tiranga-stem-explorer-workshop",
+            "category": "Unknown",
+            "verified_at": "2026-09-22T10:44:42.683107",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 404,
+                        "final_url": "https://shop.kiddypi.com/products/mission-tiranga-stem-explorer-workshop",
+                        "page_title": "404 Not Found \u2013 KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\mission-tiranga-stem-explorer-workshop-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL failed with status 404 or title '404 Not Found \u2013 KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "error": "Page failed to load"
+                    },
+                    "explanation": "Page failed to load so H1 could not be verified."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\mission-tiranga-stem-explorer-workshop-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile render had overflow or missing components."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "NOT_APPLICABLE",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "is_workshop": true
+                    },
+                    "explanation": "Not Applicable \u2014 Workshop products use event registration and do not mandate standard Add to Cart button."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "NOT_VERIFIABLE",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": false
+                    },
+                    "explanation": "Buy It Now / Dynamic checkout button not present in theme template."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "NOT_APPLICABLE",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "is_workshop": true
+                    },
+                    "explanation": "Not Applicable \u2014 Workshop products use event registration and do not mandate standard catalog collection card rendering."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "FAIL",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "DRAFT"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "FAIL",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "DRAFT"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "AI Robotics Explorer Workshop": {
+            "product_name": "AI Robotics Explorer Workshop",
+            "product_id": "gid://shopify/Product/15874375647392",
+            "handle": "ai-robotics-explorer-workshop",
+            "url": "https://kinq5t-q5.myshopify.com/products/ai-robotics-explorer-workshop",
+            "category": "Unknown",
+            "verified_at": "2026-09-22T10:44:47.302951",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 404,
+                        "final_url": "https://shop.kiddypi.com/products/ai-robotics-explorer-workshop",
+                        "page_title": "404 Not Found \u2013 KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\ai-robotics-explorer-workshop-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL failed with status 404 or title '404 Not Found \u2013 KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "error": "Page failed to load"
+                    },
+                    "explanation": "Page failed to load so H1 could not be verified."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\ai-robotics-explorer-workshop-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile render had overflow or missing components."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "NOT_APPLICABLE",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "is_workshop": true
+                    },
+                    "explanation": "Not Applicable \u2014 Workshop products use event registration and do not mandate standard Add to Cart button."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "NOT_VERIFIABLE",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": false
+                    },
+                    "explanation": "Buy It Now / Dynamic checkout button not present in theme template."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "NOT_APPLICABLE",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "is_workshop": true
+                    },
+                    "explanation": "Not Applicable \u2014 Workshop products use event registration and do not mandate standard catalog collection card rendering."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "FAIL",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "DRAFT"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "FAIL",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "DRAFT"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        },
+        "AI Robotics & Intelligent Machines Masterclass": {
+            "product_name": "AI Robotics & Intelligent Machines Masterclass",
+            "product_id": "gid://shopify/Product/15874628747424",
+            "handle": "ai-robotics-intelligent-machines-masterclass-2",
+            "url": "https://kinq5t-q5.myshopify.com/products/ai-robotics-intelligent-machines-masterclass-2",
+            "category": "Unknown",
+            "verified_at": "2026-09-22T10:44:53.781942",
+            "checks": {
+                "43": {
+                    "check_name": "Live URL Loads",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "status_code": 404,
+                        "final_url": "https://shop.kiddypi.com/products/ai-robotics-intelligent-machines-masterclass-2",
+                        "page_title": "404 Not Found \u2013 KiddyPi",
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\ai-robotics-intelligent-machines-masterclass-2-check-43-live-url.png"
+                    },
+                    "explanation": "Live URL failed with status 404 or title '404 Not Found \u2013 KiddyPi'."
+                },
+                "40": {
+                    "check_name": "Single H1",
+                    "section": "F. Search Listing",
+                    "severity": "Warning",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "error": "Page failed to load"
+                    },
+                    "explanation": "Page failed to load so H1 could not be verified."
+                },
+                "44": {
+                    "check_name": "Mobile Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "FAIL",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "viewport": "390x844",
+                        "scroll_width": 390,
+                        "client_width": 390,
+                        "has_overflow": false,
+                        "title_visible": true,
+                        "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\ai-robotics-intelligent-machines-masterclass-2-check-44-mobile.png"
+                    },
+                    "explanation": "Mobile render had overflow or missing components."
+                },
+                "45": {
+                    "check_name": "Add to Cart",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "NOT_APPLICABLE",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "is_workshop": true
+                    },
+                    "explanation": "Not Applicable \u2014 Workshop products use event registration and do not mandate standard Add to Cart button."
+                },
+                "46": {
+                    "check_name": "Buy It Now",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "NOT_VERIFIABLE",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "button_found": false
+                    },
+                    "explanation": "Buy It Now / Dynamic checkout button not present in theme template."
+                },
+                "47": {
+                    "check_name": "Collection Card Render",
+                    "section": "G. Template & Rendering",
+                    "severity": "Blocker",
+                    "result": "NOT_APPLICABLE",
+                    "verification_method": "BROWSER_VERIFIED",
+                    "evidence": {
+                        "is_workshop": true
+                    },
+                    "explanation": "Not Applicable \u2014 Workshop products use event registration and do not mandate standard catalog collection card rendering."
+                },
+                "50": {
+                    "check_name": "Published to Social Channels",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "FAIL",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "DRAFT"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                },
+                "51": {
+                    "check_name": "In WhatsApp Catalogue",
+                    "section": "H. Channels",
+                    "severity": "Warning",
+                    "result": "FAIL",
+                    "verification_method": "API_VERIFIED",
+                    "evidence": {
+                        "status": "DRAFT"
+                    },
+                    "explanation": "Verified via active Shopify publication status."
+                }
+            }
+        }
+    }
+}

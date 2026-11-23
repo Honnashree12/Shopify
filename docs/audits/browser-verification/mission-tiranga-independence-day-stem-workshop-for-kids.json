@@ -1,0 +1,109 @@
+{
+    "product_name": "Mission Tiranga: Independence Day STEM Workshop for Kids",
+    "product_id": "gid://shopify/Product/15811245605024",
+    "handle": "mission-tiranga-independence-day-stem-workshop-for-kids",
+    "url": "https://kinq5t-q5.myshopify.com/products/mission-tiranga-independence-day-stem-workshop-for-kids",
+    "category": "Courses",
+    "verified_at": "2026-09-22T10:43:39.354130",
+    "checks": {
+        "43": {
+            "check_name": "Live URL Loads",
+            "section": "G. Template & Rendering",
+            "severity": "Blocker",
+            "result": "PASS",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "status_code": 200,
+                "final_url": "https://shop.kiddypi.com/products/mission-tiranga-independence-day-stem-workshop-for-kids",
+                "page_title": "Mission Tiranga: Independence Day STEM Workshop for Kids \u2013 KiddyPi",
+                "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\mission-tiranga-independence-day-stem-workshop-for-kids-check-43-live-url.png"
+            },
+            "explanation": "Live URL returned status 200 with title 'Mission Tiranga: Independence Day STEM Workshop for Kids \u2013 KiddyPi'."
+        },
+        "40": {
+            "check_name": "Single H1",
+            "section": "F. Search Listing",
+            "severity": "Warning",
+            "result": "PASS",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "h1_count": 1,
+                "h1_texts": [
+                    "Mission Tiranga"
+                ]
+            },
+            "explanation": "Found exactly 1 visible H1 header ('Mission Tiranga')."
+        },
+        "44": {
+            "check_name": "Mobile Render",
+            "section": "G. Template & Rendering",
+            "severity": "Blocker",
+            "result": "PASS",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "viewport": "390x844",
+                "scroll_width": 390,
+                "client_width": 390,
+                "has_overflow": false,
+                "title_visible": true,
+                "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\mission-tiranga-independence-day-stem-workshop-for-kids-check-44-mobile.png"
+            },
+            "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+        },
+        "45": {
+            "check_name": "Add to Cart",
+            "section": "G. Template & Rendering",
+            "severity": "Blocker",
+            "result": "NOT_APPLICABLE",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "is_workshop": true
+            },
+            "explanation": "Not Applicable \u2014 Workshop products use event registration and do not mandate standard Add to Cart button."
+        },
+        "46": {
+            "check_name": "Buy It Now",
+            "section": "G. Template & Rendering",
+            "severity": "Blocker",
+            "result": "NOT_VERIFIABLE",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "button_found": false
+            },
+            "explanation": "Buy It Now / Dynamic checkout button not present in theme template."
+        },
+        "47": {
+            "check_name": "Collection Card Render",
+            "section": "G. Template & Rendering",
+            "severity": "Blocker",
+            "result": "NOT_APPLICABLE",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "is_workshop": true
+            },
+            "explanation": "Not Applicable \u2014 Workshop products use event registration and do not mandate standard catalog collection card rendering."
+        },
+        "50": {
+            "check_name": "Published to Social Channels",
+            "section": "H. Channels",
+            "severity": "Warning",
+            "result": "PASS",
+            "verification_method": "API_VERIFIED",
+            "evidence": {
+                "status": "ACTIVE"
+            },
+            "explanation": "Verified via active Shopify publication status."
+        },
+        "51": {
+            "check_name": "In WhatsApp Catalogue",
+            "section": "H. Channels",
+            "severity": "Warning",
+            "result": "PASS",
+            "verification_method": "API_VERIFIED",
+            "evidence": {
+                "status": "ACTIVE"
+            },
+            "explanation": "Verified via active Shopify publication status."
+        }
+    }
+}

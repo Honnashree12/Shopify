@@ -8,6 +8,8 @@ from typing import Dict, Any
 
 logger = logging.getLogger("email_service")
 
+from config import settings
+
 # Ensure emails output directory exists
 EMAILS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "outputs", "emails"))
 os.makedirs(EMAILS_DIR, exist_ok=True)
@@ -297,11 +299,11 @@ def send_email(to_email: str, subject: str, html_content: str, filename_prefix: 
         logger.error("Failed to save email copy locally: %s", e)
 
     # 2. Check if SMTP credentials are set
-    smtp_server = os.getenv("SMTP_SERVER")
-    smtp_port = os.getenv("SMTP_PORT")
-    smtp_user = os.getenv("SMTP_USERNAME")
-    smtp_password = os.getenv("SMTP_PASSWORD")
-    sender_email = os.getenv("SENDER_EMAIL", "space-workshops@example.com")
+    smtp_server = settings.smtp_server
+    smtp_port = settings.smtp_port
+    smtp_user = settings.smtp_username
+    smtp_password = settings.smtp_password
+    sender_email = settings.sender_email
 
     if not all([smtp_server, smtp_port, smtp_user, smtp_password]):
         logger.warning(

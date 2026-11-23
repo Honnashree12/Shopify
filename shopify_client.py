@@ -16,11 +16,48 @@ No credentials are hardcoded anywhere in this file.
 import os
 import base64
 import logging
+import hmac
+import hashlib
 from typing import Any, Dict, List, Optional
 
+# pyrefly: ignore [missing-import]
 import httpx
+from config import settings
 
 logger = logging.getLogger("shopify_client")
+
+
+def verify_shopify_hmac(query_params: dict, client_secret: str) -> bool:
+    """
+    Verifies the HMAC signature of query parameters sent by Shopify.
+    """
+    if not client_secret:
+        return False
+    signature = query_params.get("hmac")
+    if not signature:
+        return False
+
+    # Sort parameters alphabetically, excluding hmac and signature
+    sorted_params = []
+    for k in sorted(query_params.keys()):
+        if k in ("hmac", "signature"):
+            continue
+        v = query_params[k]
+        if isinstance(v, list):
+            for val in v:
+                sorted_params.append(f"{k}={val}")
+        else:
+            sorted_params.append(f"{k}={v}")
+
+    message = "&".join(sorted_params)
+
+    calculated_hmac = hmac.new(
+        client_secret.encode("utf-8"),
+        message.encode("utf-8"),
+        hashlib.sha256
+    ).hexdigest()
+
+    return hmac.compare_digest(calculated_hmac, signature)
 
 
 def get_mime_type(file_path: str) -> tuple[str, str]:
@@ -66,23 +103,477 @@ def _clean_store_url(raw_url: str) -> str:
     )
 
 
+from config import settings
+
+
+class ShopifyClient:
+    def __init__(self, store_url: str, access_token: Optional[str] = None, api_version: str = "2025-07"):
+        self.store_url = _clean_store_url(store_url)
+        self.api_version = api_version
+        
+        self.access_token = access_token
+        if not self.access_token:
+            # Fallback to settings override if store URLs match
+            if self.store_url == _clean_store_url(settings.shopify_store_url or ""):
+                token_override = settings.shopify_access_token
+                if token_override and "your_" not in token_override and token_override.strip():
+                    self.access_token = token_override
+            # Fallback to stored token in database/Firestore
+            if not self.access_token:
+                from services.firebase_service import get_shopify_token
+                self.access_token = get_shopify_token(self.store_url)
+                
+        if not self.access_token:
+            raise ShopifyConfigError(
+                f"No Shopify access token was provided or found in the database/Firestore for store {self.store_url}."
+            )
+            
+        self.base_url = f"https://{self.store_url}/admin/api/{self.api_version}"
+        self.headers = {
+            "X-Shopify-Access-Token": self.access_token,
+            "Content-Type": "application/json",
+        }
+
+    def create_product(self, **kwargs) -> Dict[str, Any]:
+        return create_product(**kwargs)
+
+    def update_product(self, product_id: Any, **kwargs) -> Dict[str, Any]:
+        return update_product(product_id, **kwargs)
+
+    def get_product(self, product_id: Any) -> Dict[str, Any]:
+        return get_product(product_id)
+
+    def get_product_by_sku(self, sku: str) -> Optional[Dict[str, Any]]:
+        return get_product_by_sku(sku)
+
+    def get_product_by_title(self, title: str) -> Optional[Dict[str, Any]]:
+        return get_product_by_title(title)
+
+    def upload_product_images(self, product_id: Any, image_paths: List[str]) -> List[Dict[str, Any]]:
+        return upload_product_images(product_id, image_paths)
+
+    def get_or_create_custom_collection(self, title: str) -> int:
+        return get_or_create_custom_collection(title)
+
+    def add_product_to_collection(self, product_id: Any, collection_id: int) -> Dict[str, Any]:
+        return add_product_to_collection(product_id, collection_id)
+
+    def fetch_all_products_graphql(self) -> List[Dict[str, Any]]:
+        """
+        Fetches all products from Shopify using a paginated GraphQL query.
+        Returns products with details needed for validation.
+        """
+        graphql_url = f"{self.base_url}/graphql.json"
+        
+        query = """
+        query getProducts($first: Int!, $after: String) {
+          products(first: $first, after: $after) {
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+            edges {
+              node {
+                id
+                title
+                bodyHtml
+                vendor
+                productType
+                status
+                handle
+                tags
+                seo {
+                  title
+                  description
+                }
+                templateSuffix
+                category {
+                  name
+                }
+                options {
+                  id
+                  name
+                  values
+                }
+                metafields(first: 10) {
+                  edges {
+                    node {
+                      namespace
+                      key
+                      value
+                    }
+                  }
+                }
+                collections(first: 10) {
+                  edges {
+                    node {
+                      id
+                      title
+                    }
+                  }
+                }
+                images(first: 20) {
+                  edges {
+                    node {
+                      id
+                      url
+                      altText
+                      width
+                      height
+                    }
+                  }
+                }
+                variants(first: 50) {
+                  edges {
+                    node {
+                      id
+                      title
+                      sku
+                      barcode
+                      price
+                      compareAtPrice
+                      inventoryQuantity
+                      inventoryPolicy
+                      taxable
+                      inventoryItem {
+                        tracked
+                        requiresShipping
+                        countryCodeOfOrigin
+                        measurement {
+                          weight {
+                            value
+                            unit
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        """
+        
+        products = []
+        has_next = True
+        after_cursor = None
+        
+        while has_next:
+            variables = {"first": 50}
+            if after_cursor:
+                variables["after"] = after_cursor
+                
+            logger.info("Fetching validation products page from Shopify store %s...", self.store_url)
+            try:
+                response = httpx.post(
+                    graphql_url,
+                    json={"query": query, "variables": variables},
+                    headers=self.headers,
+                    timeout=30
+                )
+                response.raise_for_status()
+                data = response.json()
+                if "errors" in data:
+                    raise ShopifyAPIError(f"Shopify GraphQL errors: {data['errors']}")
+                
+                conn = data.get("data", {}).get("products", {})
+                edges = conn.get("edges", [])
+                
+                for edge in edges:
+                    node = edge.get("node", {})
+                    # Process and normalize collections, images, variants
+                    collections = [c.get("node", {}).get("title") for c in node.get("collections", {}).get("edges", [])]
+                    
+                    images = []
+                    for img in node.get("images", {}).get("edges", []):
+                        img_node = img.get("node", {})
+                        images.append({
+                            "id": img_node.get("id"),
+                            "url": img_node.get("url"),
+                            "alt": img_node.get("altText"),
+                            "width": img_node.get("width"),
+                            "height": img_node.get("height")
+                        })
+                        
+                    variants = []
+                    for var in node.get("variants", {}).get("edges", []):
+                        var_node = var.get("node", {})
+                        inv_item = var_node.get("inventoryItem") or {}
+                        meas = inv_item.get("measurement") or {}
+                        w_obj = meas.get("weight") or {}
+                        variants.append({
+                            "id": var_node.get("id"),
+                            "title": var_node.get("title"),
+                            "sku": var_node.get("sku"),
+                            "barcode": var_node.get("barcode"),
+                            "price": var_node.get("price"),
+                            "compare_at_price": var_node.get("compareAtPrice"),
+                            "inventory_quantity": var_node.get("inventoryQuantity"),
+                            "inventory_policy": var_node.get("inventoryPolicy"),
+                            "taxable": var_node.get("taxable"),
+                            "requires_shipping": inv_item.get("requiresShipping"),
+                            "weight": w_obj.get("value"),
+                            "weight_unit": w_obj.get("unit"),
+                            "inventory_item": {
+                                "tracked": inv_item.get("tracked", False),
+                                "country_code_of_origin": inv_item.get("countryCodeOfOrigin")
+                            }
+                        })
+                        
+                    options = []
+                    for opt in node.get("options") or []:
+                        options.append({
+                            "name": opt.get("name"),
+                            "values": opt.get("values", [])
+                        })
+
+                    metafields = []
+                    for mf in node.get("metafields", {}).get("edges", []):
+                        mf_node = mf.get("node", {})
+                        metafields.append({
+                            "namespace": mf_node.get("namespace"),
+                            "key": mf_node.get("key"),
+                            "value": mf_node.get("value")
+                        })
+
+                    cat_node = node.get("category") or {}
+                    category_name = cat_node.get("name") if isinstance(cat_node, dict) else None
+
+                    products.append({
+                        "id": node.get("id"),
+                        "title": node.get("title"),
+                        "body_html": node.get("bodyHtml"),
+                        "vendor": node.get("vendor"),
+                        "product_type": node.get("productType"),
+                        "status": node.get("status"),
+                        "handle": node.get("handle"),
+                        "tags": node.get("tags") or [],
+                        "seo_title": node.get("seo", {}).get("title") if node.get("seo") else None,
+                        "seo_description": node.get("seo", {}).get("description") if node.get("seo") else None,
+                        "template_suffix": node.get("templateSuffix"),
+                        "category_name": category_name,
+                        "options": options,
+                        "metafields": metafields,
+                        "collections": collections,
+                        "images": images,
+                        "variants": variants
+                    })
+                    
+                page_info = conn.get("pageInfo", {})
+                has_next = page_info.get("hasNextPage", False)
+                after_cursor = page_info.get("endCursor")
+                
+            except httpx.HTTPError as exc:
+                logger.error("Failed to fetch products page from Shopify: %s", exc)
+                raise ShopifyAPIError(f"Shopify request failed: {exc}") from exc
+                
+        return products
+
+    def fetch_all_products(self) -> List[Dict[str, Any]]:
+        """
+        Fetches all products from Shopify using a paginated GraphQL query.
+        Falls back to REST API if GraphQL is denied or fails.
+        """
+        try:
+            return self.fetch_all_products_graphql()
+        except ShopifyAPIError as e:
+            if "ACCESS_DENIED" in str(e) or "access denied" in str(e).lower():
+                logger.warning("GraphQL products query access denied. Falling back to REST API...")
+                return self.fetch_all_products_rest()
+            raise
+        except Exception as e:
+            logger.warning("GraphQL product fetch failed: %s. Falling back to REST API...", e)
+            return self.fetch_all_products_rest()
+
+    def fetch_all_products_rest(self) -> List[Dict[str, Any]]:
+        """
+        Fetches all products using the Shopify REST Admin API.
+        This serves as a robust fallback if GraphQL is denied.
+        """
+        collection_map = {}
+        try:
+            custom_res = httpx.get(
+                f"{self.base_url}/custom_collections.json?limit=250",
+                headers=self.headers,
+                timeout=15
+            )
+            if custom_res.status_code == 200:
+                for cc in custom_res.json().get("custom_collections", []) or []:
+                    collection_map[cc["id"]] = cc["title"]
+                    
+            smart_res = httpx.get(
+                f"{self.base_url}/smart_collections.json?limit=250",
+                headers=self.headers,
+                timeout=15
+            )
+            if smart_res.status_code == 200:
+                for sc in smart_res.json().get("smart_collections", []) or []:
+                    collection_map[sc["id"]] = sc["title"]
+        except Exception as e:
+            logger.warning("Failed to build collections lookup map: %s", e)
+
+        endpoint = f"{self.base_url}/products.json?limit=250"
+        logger.info("Falling back to Shopify REST Admin API to fetch products...")
+        try:
+            response = httpx.get(endpoint, headers=self.headers, timeout=30)
+            response.raise_for_status()
+            data = response.json()
+            raw_products = data.get("products", []) or []
+            
+            products = []
+            for rp in raw_products:
+                pid = rp.get("id")
+                
+                # Fetch collections for this product
+                collections = []
+                try:
+                    coll_res = httpx.get(
+                        f"{self.base_url}/collects.json?product_id={pid}",
+                        headers=self.headers,
+                        timeout=15
+                    )
+                    if coll_res.status_code == 200:
+                        collects = coll_res.json().get("collects", [])
+                        for c in collects:
+                            cid = c.get("collection_id")
+                            c_title = collection_map.get(cid, f"Collection #{cid}")
+                            collections.append(c_title)
+                except Exception as e:
+                    logger.debug("Failed to fetch collects for product %s: %s", pid, e)
+                
+                # Fetch SEO metafields
+                seo_title = None
+                seo_description = None
+                try:
+                    meta_res = httpx.get(
+                        f"{self.base_url}/products/{pid}/metafields.json",
+                        headers=self.headers,
+                        timeout=15
+                    )
+                    if meta_res.status_code == 200:
+                        metafields = meta_res.json().get("metafields", [])
+                        for mf in metafields:
+                            namespace = mf.get("namespace")
+                            key = mf.get("key")
+                            value = mf.get("value")
+                            if namespace == "global":
+                                if key == "title_tag":
+                                    seo_title = value
+                                elif key == "description_tag":
+                                    seo_description = value
+                except Exception as e:
+                    logger.debug("Failed to fetch metafields for product %s: %s", pid, e)
+
+                # Process variants
+                variants = []
+                for v in rp.get("variants", []) or []:
+                    mgt = v.get("inventory_management")
+                    variants.append({
+                        "id": v.get("id"),
+                        "title": v.get("title"),
+                        "sku": v.get("sku"),
+                        "barcode": v.get("barcode"),
+                        "price": v.get("price"),
+                        "compare_at_price": v.get("compare_at_price"),
+                        "inventory_quantity": v.get("inventory_quantity"),
+                        "inventory_policy": v.get("inventory_policy"),
+                        "taxable": v.get("taxable"),
+                        "requires_shipping": v.get("requires_shipping"),
+                        "weight": v.get("weight"),
+                        "weight_unit": v.get("weight_unit") or v.get("weight_name"),
+                        "inventory_item": {
+                            "tracked": (mgt == "shopify"),
+                            "country_code_of_origin": v.get("country_code_of_origin")
+                        }
+                    })
+
+                # Process images
+                images = []
+                for img in rp.get("images", []) or []:
+                    images.append({
+                        "id": img.get("id"),
+                        "url": img.get("src"),
+                        "alt": img.get("alt")
+                    })
+
+                raw_tags = rp.get("tags", "") or ""
+                tag_list = [t.strip() for t in raw_tags.split(",") if t.strip()]
+
+                products.append({
+                    "id": pid,
+                    "title": rp.get("title"),
+                    "body_html": rp.get("body_html"),
+                    "vendor": rp.get("vendor"),
+                    "product_type": rp.get("product_type"),
+                    "status": rp.get("status"),
+                    "handle": rp.get("handle"),
+                    "tags": tag_list,
+                    "seo_title": seo_title,
+                    "seo_description": seo_description,
+                    "collections": collections,
+                    "images": images,
+                    "variants": variants
+                })
+            return products
+        except Exception as exc:
+            logger.error("REST fallback product fetch failed: %s", exc)
+            raise ShopifyAPIError(f"REST fetch failed: {exc}") from exc
+
+
+
+def get_validation_client() -> ShopifyClient:
+    """
+    Returns a ShopifyClient configured for the validation store.
+    """
+    store_url = settings.validation_store_url
+    if not store_url:
+        raise ShopifyConfigError(
+            "SHOPIFY_VALIDATION_STORE must be configured in environment."
+        )
+        
+    access_token = settings.validation_access_token
+    if access_token and ("your_" in access_token or not access_token.strip()):
+        access_token = None
+        
+    if not access_token:
+        # Fallback to stored token in database/Firestore
+        from services.firebase_service import get_shopify_token
+        access_token = get_shopify_token(store_url)
+        
+    if not access_token:
+        raise ShopifyConfigError(
+            "SHOPIFY_VALIDATION_TOKEN must be configured, or a stored OAuth token must exist for the store."
+        )
+    return ShopifyClient(store_url, access_token, settings.shopify_api_version)
+
+
 def _get_config() -> tuple[str, str, Dict[str, str]]:
     """
-    Reads Shopify credentials from environment variables and builds
-    the Admin API base URL + request headers.
+    Reads Shopify credentials from settings or database/Firestore,
+    and builds the Admin API base URL + request headers.
     """
-    store_url = os.getenv("SHOPIFY_STORE_URL")
-    access_token = os.getenv("SHOPIFY_ACCESS_TOKEN")
-    api_version = os.getenv("SHOPIFY_API_VERSION", "2025-07")
-
+    store_url = settings.shopify_store_url
     if not store_url:
         raise ShopifyConfigError(
             "SHOPIFY_STORE_URL is not set. Add it to your .env file, "
             "e.g. SHOPIFY_STORE_URL=your-store.myshopify.com"
         )
+        
+    access_token = settings.shopify_access_token
+    if access_token and ("your_" in access_token or not access_token.strip()):
+        access_token = None
+        
+    if not access_token:
+        from services.firebase_service import get_shopify_token
+        access_token = get_shopify_token(store_url)
+        
+    api_version = settings.shopify_api_version
+
     if not access_token:
         raise ShopifyConfigError(
-            "SHOPIFY_ACCESS_TOKEN is not set. Add it to your .env file."
+            "SHOPIFY_ACCESS_TOKEN is not set and no stored OAuth token was found. "
+            "Please run the Shopify OAuth install flow first."
         )
 
     store_url = _clean_store_url(store_url)
@@ -98,14 +589,24 @@ def _get_config() -> tuple[str, str, Dict[str, str]]:
 
 def _normalize_product(product: Dict[str, Any], store_url: str) -> Dict[str, Any]:
     """
-    Flattens a real Shopify Admin API product payload into the same
-    simple shape the workflow already expects (id, title, status,
-    price, url, variants, ...), so publisher_agent / verification_agent /
-    report_generator_agent do not need to change how they read it.
+    Flattens a real Shopify Admin API product payload into the normalized
+    shape used across the workflow (id, title, status, price, url, variants, images, etc.).
     """
     variants: List[Dict[str, Any]] = product.get("variants", []) or []
     price = variants[0].get("price") if variants else "0.0"
     handle = product.get("handle", "")
+
+    raw_images = product.get("images") or []
+    if not raw_images and product.get("image"):
+        raw_images = [product["image"]]
+
+    images = []
+    for img in raw_images:
+        if isinstance(img, dict):
+            i_copy = dict(img)
+            if "src" in i_copy and "url" not in i_copy:
+                i_copy["url"] = i_copy["src"]
+            images.append(i_copy)
 
     return {
         "id": product.get("id"),
@@ -115,10 +616,19 @@ def _normalize_product(product: Dict[str, Any], store_url: str) -> Dict[str, Any
         "product_type": product.get("product_type"),
         "status": product.get("status"),
         "handle": handle,
+        "template_suffix": product.get("template_suffix"),
         "price": float(price) if price not in (None, "") else 0.0,
         "url": f"https://{store_url}/products/{handle}" if store_url and handle else "",
         "tags": product.get("tags", ""),
         "variants": variants,
+        "images": images,
+        "image": product.get("image") or (images[0] if images else None),
+        "collections": product.get("collections") or [],
+        "options": product.get("options") or [],
+        "seo_title": product.get("seo_title") or product.get("metafields_global_title_tag") or "",
+        "seo_description": product.get("seo_description") or product.get("metafields_global_description_tag") or "",
+        "published_at": product.get("published_at"),
+        "published_scope": product.get("published_scope"),
     }
 
 
@@ -127,7 +637,7 @@ def create_product(
     body_html: Optional[str],
     price: float,
     product_type: Optional[str],
-    status: str = "active",
+    status: str = "draft",
     tags: Optional[str] = None,
     vendor: Optional[str] = None,
     sku: Optional[str] = None,
@@ -236,10 +746,16 @@ def create_product(
         product_payload["tags"] = tags
     if handle:
         product_payload["handle"] = handle
-    if template_suffix:
-        product_payload["template_suffix"] = template_suffix
+    product_payload["template_suffix"] = template_suffix or ""
     if published is not None:
         product_payload["published"] = published
+
+    product_payload["published_scope"] = "global"
+    if status.lower() == "active" or published is True:
+        import datetime
+        product_payload["published_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    elif status.lower() == "draft" or published is False:
+        product_payload["published_at"] = None
     if options:
         product_payload["options"] = options
 
@@ -373,15 +889,21 @@ def update_product(
     metafields: Optional[List[Dict[str, Any]]] = None,
     published: Optional[bool] = None,
     inventory_locations: Optional[Dict[str, int]] = None,
+    images: Optional[List[Dict[str, Any]]] = None,
+    **kwargs
 ) -> Dict[str, Any]:
     """
     Updates an existing product on Shopify via the REST Admin API.
     """
     base_url, store_url, headers = _get_config()
-    endpoint = f"{base_url}/products/{product_id}.json"
+    clean_pid = str(product_id).replace("gid://shopify/Product/", "").strip()
+    endpoint = f"{base_url}/products/{clean_pid}.json"
 
     # Fetch existing to get variant ids
-    existing = get_product(product_id)
+    try:
+        existing = get_product(clean_pid)
+    except Exception:
+        existing = {}
     existing_variants = existing.get("variants") or []
 
     product_payload: Dict[str, Any] = {}
@@ -392,8 +914,21 @@ def update_product(
     if vendor is not None: product_payload["vendor"] = vendor
     if tags is not None: product_payload["tags"] = tags
     if handle is not None: product_payload["handle"] = handle
-    if template_suffix is not None: product_payload["template_suffix"] = template_suffix
+    product_payload["template_suffix"] = template_suffix or ""
     if published is not None: product_payload["published"] = published
+
+    product_payload["published_scope"] = "global"
+    if status is not None:
+        if status.lower() == "active" or published is True:
+            import datetime
+            product_payload["published_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        elif status.lower() == "draft" or published is False:
+            product_payload["published_at"] = None
+    elif published is True:
+        import datetime
+        product_payload["published_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    elif published is False:
+        product_payload["published_at"] = None
     if options is not None: product_payload["options"] = options
 
     if seo_title is not None:
@@ -402,17 +937,30 @@ def update_product(
         product_payload["metafields_global_description_tag"] = seo_description
     if metafields is not None:
         product_payload["metafields"] = metafields
+    if images is not None:
+        product_payload["images"] = images
+    elif "images" in kwargs:
+        product_payload["images"] = kwargs["images"]
 
     variants_payload = []
     if variants:
         for idx, var in enumerate(variants):
-            var_id = var.get("id")
+            raw_var_id = var.get("id")
+            var_id = None
+            if raw_var_id:
+                clean_vid = str(raw_var_id).replace("gid://shopify/ProductVariant/", "").strip()
+                try:
+                    var_id = int(clean_vid)
+                except ValueError:
+                    var_id = clean_vid
             if not var_id and var.get("sku"):
                 for ev in existing_variants:
                     if ev.get("sku") == var["sku"]:
                         var_id = ev.get("id")
                         break
-            
+            if not var_id and existing_variants:
+                var_id = existing_variants[idx].get("id") if idx < len(existing_variants) else existing_variants[0].get("id")
+
             v_pay = {}
             if var_id: v_pay["id"] = var_id
             if var.get("price") is not None: v_pay["price"] = str(var["price"])
@@ -612,7 +1160,8 @@ def get_product(product_id: Any) -> Dict[str, Any]:
     normalized shape used across the workflow.
     """
     base_url, store_url, headers = _get_config()
-    endpoint = f"{base_url}/products/{product_id}.json"
+    clean_pid = str(product_id).replace("gid://shopify/Product/", "").strip()
+    endpoint = f"{base_url}/products/{clean_pid}.json"
 
     try:
         response = httpx.get(endpoint, headers=headers, timeout=30)
@@ -638,6 +1187,32 @@ def get_product(product_id: Any) -> Dict[str, Any]:
     product = data.get("product")
     if not product:
         raise ShopifyAPIError(f"Unexpected Shopify response: {data}")
+
+    # Fetch real-time collections for the product
+    pid = product.get("id")
+    collections = []
+    try:
+        collection_map = {}
+        c_res = httpx.get(f"{base_url}/custom_collections.json?limit=250", headers=headers, timeout=15)
+        if c_res.status_code == 200:
+            for cc in c_res.json().get("custom_collections", []):
+                collection_map[cc["id"]] = cc["title"]
+        s_res = httpx.get(f"{base_url}/smart_collections.json?limit=250", headers=headers, timeout=15)
+        if s_res.status_code == 200:
+            for sc in s_res.json().get("smart_collections", []):
+                collection_map[sc["id"]] = sc["title"]
+
+        coll_res = httpx.get(f"{base_url}/collects.json?product_id={pid}", headers=headers, timeout=15)
+        if coll_res.status_code == 200:
+            collects = coll_res.json().get("collects", [])
+            for c in collects:
+                cid = c.get("collection_id")
+                c_title = collection_map.get(cid, f"Collection #{cid}")
+                collections.append(c_title)
+    except Exception as ce:
+        logger.warning("Failed to fetch collections in get_product for product %s: %s", pid, ce)
+
+    product["collections"] = collections
 
     # Fetch real-time inventory levels for variants if tracked
     for variant in product.get("variants", []):
@@ -1222,3 +1797,42 @@ def upload_product_media_files(
             logger.info("Successfully created product media: %s", media_objects[0])
 
     return uploaded_media
+
+
+def delete_product_image(product_id: Any, image_id: Any) -> bool:
+    """
+    Deletes a specific product image from Shopify via REST API.
+    """
+    base_url, store_url, headers = _get_config()
+    safe_pid = str(product_id).replace("gid://shopify/Product/", "")
+    safe_img_id = str(image_id).replace("gid://shopify/ProductImage/", "").replace("gid://shopify/MediaImage/", "")
+    url = f"{base_url}/products/{safe_pid}/images/{safe_img_id}.json"
+    logger.info("Deleting Shopify product image %s for product %s...", safe_img_id, safe_pid)
+    res = httpx.delete(url, headers=headers, timeout=30)
+    if res.status_code in (200, 204):
+        logger.info("Successfully deleted product image %s", safe_img_id)
+        return True
+    else:
+        logger.warning("Delete image %s returned status %d: %s", safe_img_id, res.status_code, res.text)
+        return False
+
+def update_product_image_alt(product_id: Any, image_id: Any, alt_text: str) -> bool:
+    """
+    Updates the ALT text of a specific product image in Shopify via REST API.
+    """
+    base_url, store_url, headers = _get_config()
+    safe_pid = str(product_id).replace("gid://shopify/Product/", "")
+    safe_img_id = str(image_id).replace("gid://shopify/ProductImage/", "").replace("gid://shopify/MediaImage/", "")
+    url = f"{base_url}/products/{safe_pid}/images/{safe_img_id}.json"
+    payload = {"image": {"id": safe_img_id, "alt": alt_text}}
+    try:
+        res = httpx.put(url, json=payload, headers=headers, timeout=30)
+        if res.status_code == 200:
+            logger.info("Successfully updated image %s alt text on product %s", safe_img_id, safe_pid)
+            return True
+        else:
+            logger.warning("Failed to update image %s alt text: status %d %s", safe_img_id, res.status_code, res.text)
+            return False
+    except Exception as e:
+        logger.error("Exception updating image alt text for %s: %s", safe_img_id, e)
+        return False

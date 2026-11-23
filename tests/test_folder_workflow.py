@@ -470,6 +470,10 @@ def test_scenario12_duplicate_check(mock_get_sku):
         "product_name": "STEM Kit",
         "sku": "STEM-01",
         "approved_to_publish": True,
+        "approved_by_uid": "approver-uid",
+        "approved_at": "2026-08-12T00:00:00Z",
+        "approved_at_version": 1,
+        "product_version": 1,
         "preview_mode": True,
         "duplicate_action": "ASK"
     }
@@ -507,6 +511,10 @@ def test_scenario13_duplicate_update(mock_update, mock_get_sku):
         "product_price": 1499.0,
         "sku": "STEM-01",
         "approved_to_publish": True,
+        "approved_by_uid": "approver-uid",
+        "approved_at": "2026-08-12T00:00:00Z",
+        "approved_at_version": 1,
+        "product_version": 1,
         "preview_mode": True,
         "duplicate_action": "UPDATE"
     }
@@ -519,21 +527,21 @@ def test_scenario13_duplicate_update(mock_update, mock_get_sku):
 
 
 # =====================================================================
-# SCENARIO 14: Duplicate Create Action
+# SCENARIO 14: Duplicate Create Action (Mapped to Reuse)
 # =====================================================================
 @patch("tools.folder_tools.get_product_by_sku")
-@patch("tools.folder_tools.create_product")
-def test_scenario14_duplicate_create(mock_create, mock_get_sku):
+@patch("tools.folder_tools.get_product")
+def test_scenario14_duplicate_create(mock_get_product, mock_get_sku):
     mock_get_sku.return_value = {
         "product_id": 98765,
         "title": "Duplicate STEM Kit",
         "url": "https://store.myshopify.com/products/duplicate",
     }
     
-    mock_create.return_value = {
-        "id": 11111,
-        "title": "STEM Kit (Duplicate)",
-        "url": "https://store.myshopify.com/products/duplicate-2",
+    mock_get_product.return_value = {
+        "id": 98765,
+        "title": "Duplicate STEM Kit",
+        "url": "https://store.myshopify.com/products/duplicate",
         "variants": [{"id": 1234, "inventory_item_id": 5678}]
     }
 
@@ -543,14 +551,19 @@ def test_scenario14_duplicate_create(mock_create, mock_get_sku):
         "product_price": 1499.0,
         "sku": "STEM-01",
         "approved_to_publish": True,
+        "approved_by_uid": "approver-uid",
+        "approved_at": "2026-08-12T00:00:00Z",
+        "approved_at_version": 1,
+        "product_version": 1,
         "preview_mode": True,
         "duplicate_action": "CREATE"
     }
     context = MockToolContext(state)
     res = create_shopify_product_tool(context)
 
-    assert "created successfully" in res
-    assert state["shopify_product_id"] == 11111
+    assert "reused successfully" in res
+    assert state["shopify_product_id"] == 98765
+    assert state["duplicate_action_resolved"] == "REUSED_EXISTING"
 
 
 # =====================================================================
@@ -568,6 +581,10 @@ def test_scenario15_duplicate_cancel(mock_get_sku):
         "product_name": "STEM Kit",
         "sku": "STEM-01",
         "approved_to_publish": True,
+        "approved_by_uid": "approver-uid",
+        "approved_at": "2026-08-12T00:00:00Z",
+        "approved_at_version": 1,
+        "product_version": 1,
         "preview_mode": True,
         "duplicate_action": "CANCEL"
     }
@@ -576,3 +593,43 @@ def test_scenario15_duplicate_cancel(mock_get_sku):
 
     assert "PRODUCT CREATION CANCELLED" in res
     assert "workflow_error" in state
+
+
+# =====================================================================
+# SCENARIO 16: Duplicate Reuse Action
+# =====================================================================
+@patch("tools.folder_tools.get_product_by_sku")
+@patch("tools.folder_tools.get_product")
+def test_scenario16_duplicate_reuse(mock_get_product, mock_get_sku):
+    mock_get_sku.return_value = {
+        "product_id": 98765,
+        "title": "Duplicate STEM Kit",
+        "url": "https://store.myshopify.com/products/duplicate",
+    }
+    
+    mock_get_product.return_value = {
+        "id": 98765,
+        "title": "Duplicate STEM Kit",
+        "url": "https://store.myshopify.com/products/duplicate",
+        "variants": [{"id": 1234, "inventory_item_id": 5678}]
+    }
+
+    state = {
+        "product_name": "STEM Kit",
+        "product_description": "Description",
+        "product_price": 1499.0,
+        "sku": "STEM-01",
+        "approved_to_publish": True,
+        "approved_by_uid": "approver-uid",
+        "approved_at": "2026-08-12T00:00:00Z",
+        "approved_at_version": 1,
+        "product_version": 1,
+        "preview_mode": True,
+        "duplicate_action": "REUSE"
+    }
+    context = MockToolContext(state)
+    res = create_shopify_product_tool(context)
+
+    assert "reused successfully" in res
+    assert state["shopify_product_id"] == 98765
+    assert state["duplicate_action_resolved"] == "REUSED_EXISTING"

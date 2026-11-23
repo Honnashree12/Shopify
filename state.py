@@ -70,7 +70,7 @@ class ProductLaunchState(BaseModel):
 
     status: str = "pending"
 
-    approved_to_publish: bool = True
+    approved_to_publish: bool = False
 
     workshop_id: Optional[str] = None
 
@@ -81,6 +81,10 @@ class ProductLaunchState(BaseModel):
     inventory_quantity: Optional[int] = None
 
     product_status: Optional[str] = "active"
+
+    vendor: Optional[str] = None
+
+    tags: Optional[List[str]] = None
 
     detected_images: Optional[List[str]] = None
 
@@ -113,5 +117,40 @@ class ProductLaunchState(BaseModel):
     duplicate_action: str = "ASK"
 
     duplicate_action_resolved: Optional[str] = None
+
+    # Firebase & Theme Design tracking
+    firebase_product_id: Optional[str] = None
+    firebase_sync_status: Optional[str] = "pending"
+    firebase_media_paths: Optional[List[str]] = None
+    design_system_version: Optional[int] = None
+    selected_shopify_template: Optional[str] = None
+    source: Optional[str] = "campaign"
+    created_at: Optional[str] = None
+    
+    # Ownership and Review Fields
+    created_by_uid: Optional[str] = None
+    created_by_email: Optional[str] = None
+    submitted_by_uid: Optional[str] = None
+    submitted_by_email: Optional[str] = None
+    submitted_at: Optional[str] = None
+    reviewed_by_uid: Optional[str] = None
+    reviewed_by_email: Optional[str] = None
+    reviewed_at: Optional[str] = None
+    review_comment: Optional[str] = None
+    approved_by_uid: Optional[str] = None
+    approved_by_email: Optional[str] = None
+    approved_at: Optional[str] = None
+    product_version: int = 1
+    approved_at_version: Optional[int] = None
+
+    # Which pipeline stage actually failed (ingest/validate/create/media/verify/report).
+    # Lets the frontend mark the real failed stage instead of hardcoding Media.
+    failed_stage: Optional[str] = None
+
+    # Which pipeline stage is executing RIGHT NOW, while status == "running".
+    # Populated on read from workflow/progress_tracker.py (not persisted as
+    # part of the durable record) so the dashboard can show live progress
+    # instead of only finding out the outcome once the whole run finishes.
+    current_stage: Optional[str] = None
 
     errors: Dict[str, str] = Field(default_factory=dict)

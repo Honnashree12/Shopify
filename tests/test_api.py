@@ -1,20 +1,62 @@
+# pyrefly: ignore [missing-import]
 import pytest
-from fastapi.testclient import TestClient
 import sys
 import os
+
+os.environ["TESTING"] = "True"
+os.environ["ALLOW_AUTH_FALLBACK"] = "True"
 
 # Adjust path to import main and state
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from main import app
+# pyrefly: ignore [missing-import]
+from fastapi.testclient import TestClient
+import main
 
+app = main.app
 client = TestClient(app)
 
+
+@pytest.fixture(autouse=True)
+def mock_all_background_tasks():
+    import sys
+    from unittest.mock import MagicMock
+    
+    main_modules = [m for n, m in sys.modules.items() if n == "main" or n.endswith(".main")]
+    orig_adk = {}
+    orig_folder = {}
+    
+    for m in main_modules:
+        if hasattr(m, "run_adk_workflow_background"):
+            orig_adk[m] = m.run_adk_workflow_background
+            m.run_adk_workflow_background = MagicMock()
+        if hasattr(m, "run_folder_workflow_background"):
+            orig_folder[m] = m.run_folder_workflow_background
+            m.run_folder_workflow_background = MagicMock()
+            
+    yield
+    
+    for m, orig in orig_adk.items():
+        m.run_adk_workflow_background = orig
+    for m, orig in orig_folder.items():
+        m.run_folder_workflow_background = orig
+
 def test_health_check():
-    """Verify that the health check endpoint returns 200 and ADK is ready."""
+    """Verify that the health check endpoint returns 200 and ADK is ready.
+
+    Phase 5 made /health's top-level "status" reflect real sub-component
+    connectivity instead of always returning "healthy" (see main.py's
+    health() -- a broken Shopify connection now correctly degrades overall
+    status instead of masking it). This sandbox has no real Shopify
+    credentials, so "degraded" is the CORRECT result here, not a failure;
+    the previous unconditional "healthy" assertion was testing the old,
+    intentionally-inaccurate behavior.
+    """
     response = client.get("/health")
     assert response.status_code == 200
-    assert response.json() == {"status": "healthy", "adk_ready": True}
+    body = response.json()
+    assert body["status"] in ("healthy", "degraded")
+    assert body["adk_ready"] is True
 
 def test_initiate_launch():
     """Verify that the product launch endpoint accepts payload and starts session."""
@@ -31,6 +73,11 @@ def test_initiate_launch():
     assert data["status"] == "pending"
     assert data["raw_description"] == "Stainless steel, double-walled insulation, 500ml."
 
+@pytest.mark.skip(
+    reason="The mock Shopify API router was removed from this app; "
+    "publisher/verification agents now call the real Shopify Admin API "
+    "via shopify_client.py (see note in main.py)."
+)
 def test_shopify_mock_endpoints():
     """Verify the mock Shopify creation and retrieval endpoints using SQLite."""
     headers = {"X-Shopify-Access-Token": "test-token"}

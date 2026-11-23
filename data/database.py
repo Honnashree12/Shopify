@@ -33,6 +33,8 @@ def init_db(clear: bool = False):
         if clear:
             conn.execute("DROP TABLE IF EXISTS workshops")
             conn.execute("DROP TABLE IF EXISTS registrations")
+            conn.execute("DROP TABLE IF EXISTS webhook_events")
+            conn.execute("DROP TABLE IF EXISTS student_registrations")
         # Create workshops table
         conn.execute("""
             CREATE TABLE IF NOT EXISTS workshops (
@@ -57,17 +59,22 @@ def init_db(clear: bool = False):
                 image_prompts TEXT,
                 image_paths TEXT,
                 shopify_media TEXT,
+                media TEXT,
+                content TEXT,
+                instructor TEXT,
+                registration TEXT,
                 status TEXT DEFAULT 'draft',
                 created_at TEXT,
                 updated_at TEXT
             )
         """)
-        # Ensure shopify_variant_id column exists (migration helper)
-        try:
-            conn.execute("ALTER TABLE workshops ADD COLUMN shopify_variant_id INTEGER")
-        except sqlite3.OperationalError:
-            # Column already exists
-            pass
+        # Ensure new columns exist (migration helpers)
+        for new_col in ["shopify_variant_id", "media", "content", "instructor", "registration"]:
+            try:
+                conn.execute(f"ALTER TABLE workshops ADD COLUMN {new_col} TEXT")
+            except sqlite3.OperationalError:
+                # Column already exists
+                pass
 
         # Create registrations/orders table
         conn.execute("""
@@ -90,6 +97,44 @@ def init_db(clear: bool = False):
             )
         """)
         
+        # Webhook Events table for reliability & persistence before acknowledgement
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS webhook_events (
+                event_id TEXT PRIMARY KEY,
+                topic TEXT,
+                order_id TEXT,
+                raw_payload TEXT,
+                status TEXT DEFAULT 'received',
+                sync_status TEXT DEFAULT 'pending',
+                error_message TEXT,
+                created_at TEXT,
+                processed_at TEXT
+            )
+        """)
+
+        # Student registrations table for Google Sheets synchronization
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS student_registrations (
+                registration_id TEXT PRIMARY KEY,
+                shopify_order_id TEXT,
+                workshop_name TEXT,
+                parent_name TEXT,
+                parent_phone TEXT,
+                parent_email TEXT,
+                area TEXT,
+                child_name TEXT,
+                child_age TEXT,
+                payment_status TEXT,
+                registration_date TEXT,
+                sync_status TEXT DEFAULT 'Pending',
+                retry_count INTEGER DEFAULT 0,
+                error_message TEXT,
+                raw_properties TEXT,
+                created_at TEXT,
+                updated_at TEXT
+            )
+        """)
+
         # Ensure school & emergency_contact columns exist in registrations (migration helper)
         try:
             conn.execute("ALTER TABLE registrations ADD COLUMN school TEXT")
@@ -112,8 +157,8 @@ def create_workshop(workshop_data: Dict[str, Any]) -> str:
             """
             INSERT INTO workshops (
                 id, name, description, date, time, duration, venue, age_group, price, 
-                topics, poster_path, video_url, sales_team_email, status, created_at, updated_at
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                topics, poster_path, video_url, sales_team_email, media, content, instructor, registration, status, created_at, updated_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 workshop_id,
@@ -129,6 +174,10 @@ def create_workshop(workshop_data: Dict[str, Any]) -> str:
                 workshop_data.get("poster_path", ""),
                 workshop_data.get("video_url", ""),
                 workshop_data.get("sales_team_email", ""),
+                json.dumps(workshop_data.get("media", {})),
+                json.dumps(workshop_data.get("content", {})),
+                json.dumps(workshop_data.get("instructor", {})),
+                json.dumps(workshop_data.get("registration", {})),
                 workshop_data.get("status", "draft"),
                 now,
                 now
@@ -207,21 +256,44 @@ def publish_workshop(workshop_id: str, shopify_product_id: int, shopify_url: str
         )
         conn.commit()
 
+def update_workshop_shopify_ids(workshop_id: str, shopify_product_id: int, shopify_variant_id: Optional[int] = None, status: Optional[str] = None):
+    """Update shopify_product_id, shopify_variant_id, and optional status of a workshop in the database."""
+    now = datetime.utcnow().isoformat()
+    with get_connection() as conn:
+        if status:
+            conn.execute(
+                "UPDATE workshops SET shopify_product_id = ?, shopify_variant_id = ?, status = ?, updated_at = ? WHERE id = ?",
+                (shopify_product_id, shopify_variant_id, status, now, workshop_id)
+            )
+        else:
+            conn.execute(
+                "UPDATE workshops SET shopify_product_id = ?, shopify_variant_id = ?, updated_at = ? WHERE id = ?",
+                (shopify_product_id, shopify_variant_id, now, workshop_id)
+            )
+        conn.commit()
+
+
+def _decode_workshop_dict(data: Dict[str, Any]) -> Dict[str, Any]:
+    data["topics"] = parse_json_field(data.get("topics"), [])
+    data["seo_metadata"] = parse_json_field(data.get("seo_metadata"), {})
+    data["marketing"] = parse_json_field(data.get("marketing"), {})
+    data["image_prompts"] = parse_json_field(data.get("image_prompts"), {})
+    data["image_paths"] = parse_json_field(data.get("image_paths"), [])
+    data["shopify_media"] = parse_json_field(data.get("shopify_media"), [])
+    data["media"] = parse_json_field(data.get("media"), {})
+    data["content"] = parse_json_field(data.get("content"), {})
+    data["instructor"] = parse_json_field(data.get("instructor"), {})
+    data["registration"] = parse_json_field(data.get("registration"), {})
+    return data
+
+
 def get_workshop(workshop_id: str) -> Optional[Dict[str, Any]]:
     """Fetch details of a single workshop."""
     with get_connection() as conn:
         row = conn.execute("SELECT * FROM workshops WHERE id = ?", (workshop_id,)).fetchone()
         if not row:
             return None
-        data = dict(row)
-        # Decode JSON fields safely
-        data["topics"] = parse_json_field(data["topics"], [])
-        data["seo_metadata"] = parse_json_field(data["seo_metadata"], {})
-        data["marketing"] = parse_json_field(data["marketing"], {})
-        data["image_prompts"] = parse_json_field(data["image_prompts"], {})
-        data["image_paths"] = parse_json_field(data["image_paths"], [])
-        data["shopify_media"] = parse_json_field(data["shopify_media"], [])
-        return data
+        return _decode_workshop_dict(dict(row))
 
 def get_workshop_by_shopify_id(shopify_product_id: int) -> Optional[Dict[str, Any]]:
     """Fetch details of a workshop by Shopify Product ID."""
@@ -229,32 +301,13 @@ def get_workshop_by_shopify_id(shopify_product_id: int) -> Optional[Dict[str, An
         row = conn.execute("SELECT * FROM workshops WHERE shopify_product_id = ?", (shopify_product_id,)).fetchone()
         if not row:
             return None
-        data = dict(row)
-        # Decode JSON fields safely
-        data["topics"] = parse_json_field(data["topics"], [])
-        data["seo_metadata"] = parse_json_field(data["seo_metadata"], {})
-        data["marketing"] = parse_json_field(data["marketing"], {})
-        data["image_prompts"] = parse_json_field(data["image_prompts"], {})
-        data["image_paths"] = parse_json_field(data["image_paths"], [])
-        data["shopify_media"] = parse_json_field(data["shopify_media"], [])
-        return data
+        return _decode_workshop_dict(dict(row))
 
 def get_all_workshops() -> List[Dict[str, Any]]:
     """Fetch all workshops in the system."""
     with get_connection() as conn:
         rows = conn.execute("SELECT * FROM workshops ORDER BY created_at DESC").fetchall()
-        results = []
-        for r in rows:
-            data = dict(r)
-            # Decode JSON fields safely
-            data["topics"] = parse_json_field(data["topics"], [])
-            data["seo_metadata"] = parse_json_field(data["seo_metadata"], {})
-            data["marketing"] = parse_json_field(data["marketing"], {})
-            data["image_prompts"] = parse_json_field(data["image_prompts"], {})
-            data["image_paths"] = parse_json_field(data["image_paths"], [])
-            data["shopify_media"] = parse_json_field(data["shopify_media"], [])
-            results.append(data)
-        return results
+        return [_decode_workshop_dict(dict(r)) for r in rows]
 
 def add_registration(reg_data: Dict[str, Any]):
     """Insert a new order/registration."""
@@ -321,3 +374,216 @@ def get_dashboard_metrics() -> Dict[str, Any]:
             "total_revenue": revenue,
             "recent_orders": [dict(r) for r in recent_orders]
         }
+
+
+# =====================================================================
+# Student Registration and Webhook Event Persistence
+# =====================================================================
+
+def save_webhook_event(
+    event_id: str,
+    topic: str,
+    order_id: Optional[str],
+    raw_payload: str,
+    status: str = "received",
+    sync_status: str = "pending"
+) -> str:
+    """Persist raw webhook event before processing."""
+    now = datetime.utcnow().isoformat()
+    with get_connection() as conn:
+        conn.execute(
+            """
+            INSERT OR REPLACE INTO webhook_events (
+                event_id, topic, order_id, raw_payload, status, sync_status, created_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?)
+            """,
+            (event_id, topic, str(order_id) if order_id else None, raw_payload, status, sync_status, now)
+        )
+        conn.commit()
+    return event_id
+
+
+def update_webhook_event(
+    event_id: str,
+    status: str,
+    sync_status: str,
+    error_message: Optional[str] = None
+):
+    """Update status of a webhook event."""
+    now = datetime.utcnow().isoformat()
+    with get_connection() as conn:
+        conn.execute(
+            """
+            UPDATE webhook_events
+            SET status = ?, sync_status = ?, error_message = ?, processed_at = ?
+            WHERE event_id = ?
+            """,
+            (status, sync_status, error_message, now, event_id)
+        )
+        conn.commit()
+
+
+def get_webhook_event(event_id: str) -> Optional[Dict[str, Any]]:
+    """Retrieve webhook event by ID."""
+    with get_connection() as conn:
+        row = conn.execute("SELECT * FROM webhook_events WHERE event_id = ?", (event_id,)).fetchone()
+        if not row:
+            return None
+        return dict(row)
+
+
+def scrub_webhook_event_payload(event_id: str):
+    """
+    Scrub sensitive customer and child PII from a processed webhook payload
+    to avoid indefinite retention of personal data (GDPR / DPDP compliance).
+    """
+    now = datetime.utcnow().isoformat()
+    with get_connection() as conn:
+        row = conn.execute("SELECT raw_payload FROM webhook_events WHERE event_id = ?", (event_id,)).fetchone()
+        if not row or not row["raw_payload"]:
+            return
+        try:
+            data = json.loads(row["raw_payload"])
+            if "customer" in data and isinstance(data["customer"], dict):
+                cust = data["customer"]
+                data["customer"] = {
+                    "id": cust.get("id"),
+                    "email_scrubbed": bool(cust.get("email")),
+                    "phone_scrubbed": bool(cust.get("phone"))
+                }
+            if "billing_address" in data and isinstance(data["billing_address"], dict):
+                data["billing_address"] = {"country": data["billing_address"].get("country", "")}
+            if "shipping_address" in data and isinstance(data["shipping_address"], dict):
+                data["shipping_address"] = {"country": data["shipping_address"].get("country", "")}
+            if "email" in data:
+                data["email"] = "[SCRUBBED]"
+            if "phone" in data:
+                data["phone"] = "[SCRUBBED]"
+            if "note_attributes" in data and isinstance(data["note_attributes"], list):
+                data["note_attributes"] = [
+                    {"name": a.get("name"), "value": "[SCRUBBED]"} for a in data.get("note_attributes", [])
+                    if isinstance(a, dict)
+                ]
+            for item in data.get("line_items", []):
+                if isinstance(item, dict) and "properties" in item and isinstance(item["properties"], list):
+                    item["properties"] = [
+                        {"name": p.get("name"), "value": "[SCRUBBED]"} for p in item.get("properties", [])
+                        if isinstance(p, dict)
+                    ]
+            data["_sanitized"] = True
+            data["_sanitized_at"] = now
+            scrubbed_payload = json.dumps(data)
+            conn.execute(
+                "UPDATE webhook_events SET raw_payload = ? WHERE event_id = ?",
+                (scrubbed_payload, event_id)
+            )
+            conn.commit()
+        except Exception:
+            pass
+
+
+def prune_old_webhook_events(retention_days: int = 30) -> int:
+    """Delete processed/ignored webhook events older than retention_days."""
+    from datetime import timedelta
+    cutoff = (datetime.utcnow() - timedelta(days=retention_days)).isoformat()
+    with get_connection() as conn:
+        cursor = conn.execute(
+            "DELETE FROM webhook_events WHERE status IN ('processed', 'ignored') AND created_at < ?",
+            (cutoff,)
+        )
+        conn.commit()
+        return cursor.rowcount
+
+
+def save_student_registration(reg_dict: Dict[str, Any]) -> str:
+    """Save or update student registration record."""
+    now = datetime.utcnow().isoformat()
+    raw_props = json.dumps(reg_dict.get("raw_properties", {})) if isinstance(reg_dict.get("raw_properties"), (dict, list)) else str(reg_dict.get("raw_properties", ""))
+    with get_connection() as conn:
+        conn.execute(
+            """
+            INSERT OR REPLACE INTO student_registrations (
+                registration_id, shopify_order_id, workshop_name,
+                parent_name, parent_phone, parent_email, area,
+                child_name, child_age, payment_status, registration_date,
+                sync_status, retry_count, error_message, raw_properties,
+                created_at, updated_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                reg_dict["registration_id"],
+                str(reg_dict.get("shopify_order_id", "")),
+                reg_dict.get("workshop_name", ""),
+                reg_dict.get("parent_name", ""),
+                reg_dict.get("parent_phone", ""),
+                reg_dict.get("parent_email", ""),
+                reg_dict.get("area", ""),
+                reg_dict.get("child_name", ""),
+                str(reg_dict.get("child_age", "")),
+                reg_dict.get("payment_status", "paid"),
+                reg_dict.get("registration_date", now),
+                reg_dict.get("sync_status", "Pending"),
+                reg_dict.get("retry_count", 0),
+                reg_dict.get("error_message"),
+                raw_props,
+                reg_dict.get("created_at") or now,
+                now
+            )
+        )
+        conn.commit()
+    return reg_dict["registration_id"]
+
+
+def get_student_registration(registration_id: str) -> Optional[Dict[str, Any]]:
+    """Fetch details of a single student registration."""
+    with get_connection() as conn:
+        row = conn.execute("SELECT * FROM student_registrations WHERE registration_id = ?", (registration_id,)).fetchone()
+        if not row:
+            return None
+        return dict(row)
+
+
+def get_all_student_registrations() -> List[Dict[str, Any]]:
+    """Fetch all student registrations."""
+    with get_connection() as conn:
+        rows = conn.execute("SELECT * FROM student_registrations ORDER BY created_at DESC").fetchall()
+        return [dict(r) for r in rows]
+
+
+def update_student_registration_sync(
+    registration_id: str,
+    sync_status: str,
+    error_message: Optional[str] = None,
+    increment_retry: bool = False
+):
+    """Update synchronization status of a student registration."""
+    now = datetime.utcnow().isoformat()
+    with get_connection() as conn:
+        if increment_retry:
+            conn.execute(
+                """
+                UPDATE student_registrations
+                SET sync_status = ?, error_message = ?, retry_count = retry_count + 1, updated_at = ?
+                WHERE registration_id = ?
+                """,
+                (sync_status, error_message, now, registration_id)
+            )
+        else:
+            conn.execute(
+                """
+                UPDATE student_registrations
+                SET sync_status = ?, error_message = ?, updated_at = ?
+                WHERE registration_id = ?
+                """,
+                (sync_status, error_message, now, registration_id)
+            )
+        conn.commit()
+
+
+def get_failed_student_registrations() -> List[Dict[str, Any]]:
+    """Fetch all student registrations that failed to sync."""
+    with get_connection() as conn:
+        rows = conn.execute(
+            "SELECT * FROM student_registrations WHERE sync_status IN ('Failed', 'Pending') ORDER BY created_at ASC"
+        ).fetchall()
+        return [dict(r) for r in rows]

@@ -1,0 +1,120 @@
+{
+    "product_name": "KiddyPi Digital Diya DIY STEM Kit | Learn Electronics Through a Safe Festival Craft Activity",
+    "product_id": "gid://shopify/Product/15767758635168",
+    "handle": "kiddypi-digital-diya-diy-stem-kit-learn-electronics-through-a-safe-festival-craft-activity",
+    "url": "https://kinq5t-q5.myshopify.com/products/kiddypi-digital-diya-diy-stem-kit-learn-electronics-through-a-safe-festival-craft-activity",
+    "category": "STEM Kits (diy-kits)",
+    "verified_at": "2026-09-22T10:40:48.252412",
+    "checks": {
+        "43": {
+            "check_name": "Live URL Loads",
+            "section": "G. Template & Rendering",
+            "severity": "Blocker",
+            "result": "PASS",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "status_code": 200,
+                "final_url": "https://shop.kiddypi.com/products/kiddypi-digital-diya-diy-stem-kit-learn-electronics-through-a-safe-festival-craft-activity",
+                "page_title": "Digital Diya DIY STEM Kit for Kids | Festival Electronics Project | KiddyPi",
+                "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-digital-diya-diy-stem-kit-learn-electronics-through-a-safe-festival-craft-activity-check-43-live-url.png"
+            },
+            "explanation": "Live URL returned status 200 with title 'Digital Diya DIY STEM Kit for Kids | Festival Electronics Project | KiddyPi'."
+        },
+        "40": {
+            "check_name": "Single H1",
+            "section": "F. Search Listing",
+            "severity": "Warning",
+            "result": "PASS",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "h1_count": 1,
+                "h1_texts": [
+                    "KiddyPi Digital Diya DIY STEM Kit | Learn Electronics Through a Safe Festival Craft Activity"
+                ]
+            },
+            "explanation": "Found exactly 1 visible H1 header ('KiddyPi Digital Diya DIY STEM Kit | Learn Electronics Through a Safe Festival Craft Activity')."
+        },
+        "44": {
+            "check_name": "Mobile Render",
+            "section": "G. Template & Rendering",
+            "severity": "Blocker",
+            "result": "PASS",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "viewport": "390x844",
+                "scroll_width": 390,
+                "client_width": 390,
+                "has_overflow": false,
+                "title_visible": true,
+                "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-digital-diya-diy-stem-kit-learn-electronics-through-a-safe-festival-craft-activity-check-44-mobile.png"
+            },
+            "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+        },
+        "45": {
+            "check_name": "Add to Cart",
+            "section": "G. Template & Rendering",
+            "severity": "Blocker",
+            "result": "PASS",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "button_found": true,
+                "button_text": "\u2212",
+                "cart_items_count": 0,
+                "cart_item_handles": [],
+                "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-digital-diya-diy-stem-kit-learn-electronics-through-a-safe-festival-craft-activity-check-45-add-to-cart.png"
+            },
+            "explanation": "Add to Cart button operates ('\u2212'). Added 0 item(s) to cart."
+        },
+        "46": {
+            "check_name": "Buy It Now",
+            "section": "G. Template & Rendering",
+            "severity": "Blocker",
+            "result": "PASS",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "button_found": true,
+                "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH78CZg3iq62mASXUXkwCK%2Fen-in%3F_r%3DAQABZFFW0VyJj1qER2JTObZpEUDT0kc6u30t2ro25iGT2T8%26locale%3Den-IN",
+                "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-digital-diya-diy-stem-kit-learn-electronics-through-a-safe-festival-craft-activity-check-46-buy-now.png"
+            },
+            "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+        },
+        "47": {
+            "check_name": "Collection Card Render",
+            "section": "G. Template & Rendering",
+            "severity": "Blocker",
+            "result": "PASS",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "collection_url": "https://kinq5t-q5.myshopify.com/collections/all",
+                "card_found": true,
+                "card_href": "/products/kiddypi-digital-diya-diy-stem-kit-learn-electronics-through-a-safe-festival-craft-activity",
+                "has_image": true,
+                "has_price": true,
+                "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-digital-diya-diy-stem-kit-learn-electronics-through-a-safe-festival-craft-activity-check-47-collection-card.png"
+            },
+            "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/all' (link: '/products/kiddypi-digital-diya-diy-stem-kit-learn-electronics-through-a-safe-festival-craft-activity')."
+        },
+        "50": {
+            "check_name": "Published to Social Channels",
+            "section": "H. Channels",
+            "severity": "Warning",
+            "result": "PASS",
+            "verification_method": "API_VERIFIED",
+            "evidence": {
+                "status": "ACTIVE"
+            },
+            "explanation": "Verified via active Shopify publication status."
+        },
+        "51": {
+            "check_name": "In WhatsApp Catalogue",
+            "section": "H. Channels",
+            "severity": "Warning",
+            "result": "PASS",
+            "verification_method": "API_VERIFIED",
+            "evidence": {
+                "status": "ACTIVE"
+            },
+            "explanation": "Verified via active Shopify publication status."
+        }
+    }
+}

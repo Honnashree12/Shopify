@@ -1,0 +1,213 @@
+{% comment %}
+  ==========================================================================
+  AI TINKER SATURDAYS — AI Inventor Experience Workshop Landing Page
+  Section: sections/kiddypi-workshop-ai-tinker.liquid
+  Dedicated section for the "AI Tinker Saturdays" product only.
+  Does NOT affect mission-tiranga-product.liquid or any other workshop page.
+  Real Shopify product/cart/checkout throughout. No fabricated data.
+  Brand tokens match the rest of the KiddyPi theme (same orange/cream/ink
+  system used on mission-tiranga-product.liquid / the home page — pulled
+  from assets/mission-tiranga.css's documented brand palette). Typography
+  (Fraunces display + Poppins body) and hero/about layout format match
+  Mission Tiranga's UI, per explicit request. No India-specific content,
+  no green (kept as a Tiranga-only thematic accent there), no new palette.
+  ==========================================================================
+{% endcomment %}
+
+{%- liquid
+  assign ait_id = section.id
+  assign ait_variant = product.selected_or_first_available_variant
+  assign ait_available = ait_variant.available
+  assign ait_intro = product.metafields.custom.course_introduction
+  assign ait_conclusion = product.metafields.custom.course_conclusion
+  assign ait_skills = product.metafields.custom.course_skills
+  assign ait_core = product.metafields.custom.course_core_concepts
+  assign ait_location = product.metafields.custom.course_location.value
+  assign ait_mode = product.metafields.custom.course_mode.value
+  assign ait_category = product.metafields.custom.course_category.value
+  assign ait_track_inventory = false
+  if ait_variant.inventory_management == 'shopify'
+    assign ait_track_inventory = true
+  endif
+  assign ait_project_blocks = section.blocks | where: 'type', 'project'
+  assign ait_stage_blocks = section.blocks | where: 'type', 'stage'
+  assign ait_gallery_blocks = section.blocks | where: 'type', 'gallery_item'
+  assign ait_variant_id = ait_variant.id
+  assign ait_workshop_date = section.settings.event_date | default: '22 August 2026'
+  if section.settings.event_day != blank
+    assign ait_workshop_date = ait_workshop_date | append: ', ' | append: section.settings.event_day
+  endif
+  assign ait_workshop_time = section.settings.event_time | default: '2:30 PM – 4:00 PM'
+  assign ait_workshop_location = section.settings.venue | default: 'KiddyPi Academy, Jayanagar'
+  if ait_mode != blank
+    assign ait_workshop_location = ait_workshop_location | append: ' · ' | append: ait_mode
+  endif
+  assign ait_hero_chips = section.settings.hero_tagline | split: '·'
+  assign ait_core_text = ait_core | metafield_tag | strip_html | strip_newlines | strip
+  assign ait_core_list = ait_core_text | split: ','
+  assign ait_skills_text = ait_skills | metafield_tag | strip_html | strip_newlines | strip
+  assign ait_skills_list = ait_skills_text | split: ','
+-%}
+
+<div class="ait-root" id="ai-tinker-{{ ait_id }}" data-section-id="{{ ait_id }}">
+
+<style>
+  #ai-tinker-{{ ait_id }} {
+    --paper: #FFFFFF;
+    --paper-tint: #FBF1E1;
+    --paper-tint-deep: #F5E2C4;
+    --ink: #2B1A0E;
+    --ink-dark: #2B1A0E;
+    --ink-soft: rgba(43,26,14,0.68);
+    --ink-faint: rgba(43,26,14,0.46);
+    --amber: #F3922C;
+    --rust: #DA6A14;
+    --rust-mid: #E87D1E;
+    --gradient: linear-gradient(135deg, var(--amber) 0%, var(--rust) 100%);
+    --line: rgba(43,26,14,0.10);
+    --shadow-soft: 0 20px 50px rgba(60,32,10,0.12);
+    --shadow-glow: 0 14px 30px rgba(218,106,20,0.32);
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Poppins', 'Inter', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+  #ai-tinker-{{ ait_id }} * { box-sizing: border-box; }
+  #ai-tinker-{{ ait_id }} img { max-width: 100%; display: block; }
+  #ai-tinker-{{ ait_id }} h1,
+  #ai-tinker-{{ ait_id }} h2,
+  #ai-tinker-{{ ait_id }} h3 {
+    font-family: 'Fraunces', 'Poppins', serif;
+    font-weight: 600;
+    color: var(--ink-dark);
+    margin: 0;
+  }
+  #ai-tinker-{{ ait_id }} .ait-wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  #ai-tinker-{{ ait_id }} .ait-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rust);
+    background: var(--paper-tint-deep);
+    padding: 7px 18px;
+    border-radius: 999px;
+  }
+  #ai-tinker-{{ ait_id }} .ait-eyebrow::before {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--amber);
+    flex: none;
+  }
+  #ai-tinker-{{ ait_id }} .ait-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 20px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(218,106,20,0.22);
+    background: var(--paper);
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--rust);
+    box-shadow: 0 6px 16px rgba(60,32,10,0.07);
+  }
+  #ai-tinker-{{ ait_id }} .ait-pill--flame {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: #fff;
+  }
+  #ai-tinker-{{ ait_id }} .ait-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 15px 30px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    background: var(--gradient);
+    color: #fff;
+    box-shadow: 0 14px 28px rgba(216,78,38,0.30);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  #ai-tinker-{{ ait_id }} .ait-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 34px rgba(216,78,38,0.38);
+  }
+  #ai-tinker-{{ ait_id }} .ait-btn:focus-visible,
+  #ai-tinker-{{ ait_id }} a:focus-visible,
+  #ai-tinker-{{ ait_id }} button:focus-visible {
+    outline: 2.5px solid var(--rust);
+    outline-offset: 3px;
+  }
+  #ai-tinker-{{ ait_id }} .ait-btn[disabled] {
+    opacity: 0.55;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=Poppins:wght@400;500;600;700;800&display=swap">
+
+<section class="ait-hero ait-reveal" data-ait-reveal>
+  <div class="ait-wrap ait-hero-inner">
+    <div class="ait-hero-grid">
+      <div class="ait-hero-copy">
+        <div class="ait-badge-row">
+          <span class="ait-pill ait-pill--flame">{{ section.settings.event_date | default: '22 August 2026' }} · {{ section.settings.session_type | default: 'Demo Session' }}</span>
+          <span class="ait-pill">{{ section.settings.hero_eyebrow | default: 'AI Inventor Experience' }}</span>
+        </div>
+        <h1>{{ section.settings.hero_title | default: 'AI Tinker' }} <span>{{ section.settings.hero_title_accent | default: 'Saturdays' }}</span></h1>
+        <p class="ait-subtitle">{{ section.settings.hero_subtitle | default: 'Where AI Meets the Real World' }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+{% schema %}
+{
+  "name": "AI Tinker Workshop",
+  "settings": [
+    { "type": "text", "id": "hero_eyebrow", "label": "Hero eyebrow", "default": "AI Inventor Experience" },
+    { "type": "text", "id": "hero_title", "label": "Hero title", "default": "AI Tinker" },
+    { "type": "text", "id": "hero_title_accent", "label": "Hero title accent", "default": "Saturdays" },
+    { "type": "text", "id": "hero_subtitle", "label": "Hero subtitle", "default": "Where AI Meets the Real World" }
+  ],
+  "blocks": [
+    {
+      "type": "stage",
+      "name": "Journey stage",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "See" }
+      ]
+    },
+    {
+      "type": "project",
+      "name": "AI project",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Project name", "default": "Smart Bin" }
+      ]
+    }
+  ]
+}
+{% endschema %}

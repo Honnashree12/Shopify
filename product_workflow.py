@@ -46,3 +46,13 @@ folder_product_workflow = Workflow(
         (folder_verification_agent, folder_report_agent),
     ],
 )
+
+
+from agents.product_validation_agent import product_validation_agent
+
+validation_workflow = Workflow(
+    name="ProductValidationWorkflow",
+    edges=[
+        ("START", product_validation_agent),
+    ],
+)

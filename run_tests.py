@@ -3,6 +3,7 @@ import os
 
 # Adjust path to import files correctly
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
+os.environ["ALLOW_AUTH_FALLBACK"] = "True"
 
 from tests.test_workshop_platform import test_database_crud, test_webhook_endpoint
 from tests.test_customer_flow import (

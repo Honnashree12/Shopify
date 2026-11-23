@@ -26,7 +26,7 @@ async def create_session(initial_state: Optional[Dict[str, Any]] = None, session
         "markdown_report_path": "",
         "json_report_path": "",
         "workshop_id": None,
-        "approved_to_publish": True,
+        "approved_to_publish": False,
         "product_folder_path": None,
         "sku": None,
         "inventory_quantity": None,
@@ -35,6 +35,11 @@ async def create_session(initial_state: Optional[Dict[str, Any]] = None, session
         "detected_videos": [],
         "media_upload_results": [],
         "folder_report": "",
+        "firebase_product_id": None,
+        "firebase_sync_status": "pending",
+        "firebase_media_paths": [],
+        "design_system_version": None,
+        "selected_shopify_template": None,
     }
 
     if initial_state:

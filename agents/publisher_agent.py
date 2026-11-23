@@ -65,9 +65,6 @@ def publish_to_shopify(tool_context: ToolContext) -> str:
     if not generated_description:
         missing.append("generated_description")
 
-    if not seo_metadata:
-        missing.append("seo_metadata")
-
     if missing:
         return (
             "Publishing failed.\n"
@@ -75,9 +72,25 @@ def publish_to_shopify(tool_context: ToolContext) -> str:
             + "\n".join(f"- {item}" for item in missing)
         )
 
-    # Tags are optional -- reuse SEO keywords as tags when available,
-    # without requiring any change to the SEO agent itself.
-    tags = seo_metadata.get("keywords") if isinstance(seo_metadata, dict) else None
+    # Handle missing or invalid SEO metadata safely
+    if not seo_metadata or not isinstance(seo_metadata, dict):
+        logger.warning("seo_metadata missing or invalid in state; synthesizing safe defaults from product details.")
+        seo_metadata = {}
+
+    # Extract and normalize SEO metadata
+    from services.seo_validator import validate_seo_metadata
+    val_res = validate_seo_metadata(
+        seo_metadata=seo_metadata,
+        product_name=product_name,
+        product_description=generated_description or product_description
+    )
+    sanitized_seo = val_res.sanitized_metadata
+    seo_title = sanitized_seo.get("title")
+    seo_description = sanitized_seo.get("description")
+    handle = sanitized_seo.get("slug") or sanitized_seo.get("handle")
+    
+    # Validated and normalized tags
+    tags = sanitized_seo.get("keywords") or None
 
     try:
 
@@ -86,13 +99,64 @@ def publish_to_shopify(tool_context: ToolContext) -> str:
             body_html=generated_description,
             price=float(product_price),  # ensure numeric
             product_type=product_category,
-            status="active",
+            status="draft",
             tags=tags,
+            seo_title=seo_title,
+            seo_description=seo_description,
+            handle=handle,
         )
+
+        # Verify created product actually contains saved SEO fields
+        from shopify_client import get_product
+        try:
+            created_check = get_product(product["id"])
+            saved_seo_title = created_check.get("seo_title") or ""
+            saved_seo_desc = created_check.get("seo_description") or ""
+            saved_handle = created_check.get("handle") or ""
+
+            seo_mismatches = []
+            if seo_title and saved_seo_title != seo_title:
+                msg = f"SEO Title verification mismatch: expected '{seo_title}', got '{saved_seo_title}'"
+                logger.warning(msg)
+                seo_mismatches.append(msg)
+            if seo_description and saved_seo_desc != seo_description:
+                msg = f"SEO Description verification mismatch: expected '{seo_description}', got '{saved_seo_desc}'"
+                logger.warning(msg)
+                seo_mismatches.append(msg)
+            if handle and saved_handle != handle:
+                msg = f"SEO Handle verification mismatch: expected '{handle}', got '{saved_handle}'"
+                logger.warning(msg)
+                seo_mismatches.append(msg)
+
+            seo_verification = {
+                "verified": len(seo_mismatches) == 0,
+                "saved_seo_title": saved_seo_title,
+                "saved_seo_description": saved_seo_desc,
+                "saved_handle": saved_handle,
+                "mismatches": seo_mismatches,
+            }
+        except Exception as ve:
+            logger.warning("Failed to fetch product for SEO verification: %s", ve)
+            seo_verification = {
+                "verified": False,
+                "saved_seo_title": None,
+                "saved_seo_description": None,
+                "saved_handle": None,
+                "mismatches": [f"Verification fetch error: {ve}"],
+            }
+            created_check = {}
+
+        product["seo_title"] = seo_verification.get("saved_seo_title") or seo_title
+        product["seo_description"] = seo_verification.get("saved_seo_description") or seo_description
+        product["handle"] = seo_verification.get("saved_handle") or handle
+        product["seo_verification"] = seo_verification
+        if created_check.get("url"):
+            product["url"] = created_check["url"]
 
         state["shopify_product"] = product
         state["shopify_product_id"] = product["id"]
         state["shopify_url"] = product["url"]
+        state["seo_verification"] = seo_verification
 
         variant_id = None
         if product.get("variants"):
@@ -179,11 +243,20 @@ def publish_to_shopify(tool_context: ToolContext) -> str:
         print(f"Attached {len(verified_media)} images to Shopify product.")
         print("==================================================\n")
 
+        verification_status_note = ""
+        if not seo_verification.get("verified", False):
+            mismatches = seo_verification.get("mismatches", [])
+            verification_status_note = (
+                f"\nWARNING: Shopify SEO field verification failed:\n"
+                + "\n".join(f"- {item}" for item in mismatches)
+            )
+
         return (
             f"Product published successfully.\n"
             f"Product ID: {product['id']}\n"
             f"URL: {product['url']}\n"
             f"Attached {len(verified_media)} media assets."
+            f"{verification_status_note}"
         )
 
 

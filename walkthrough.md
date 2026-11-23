@@ -63,3 +63,39 @@ Below is the dashboard console displaying the folder creation upload tab:
 *   **[state.py](file:///c:/Users/honnu/Downloads/shopify-launch-agent_shopify-live2/shopify-launch-agent/shopify-product-launch/state.py)**: Added manifest tracking, conflicts, and duplicate fields.
 *   **[static/index.html](file:///c:/Users/honnu/Downloads/shopify-launch-agent_shopify-live2/shopify-launch-agent/shopify-product-launch/static/index.html)**: Integrated interactive approval card and resolutions form.
 *   **[tests/test_folder_workflow.py](file:///c:/Users/honnu/Downloads/shopify-launch-agent_shopify-live2/shopify-launch-agent/shopify-product-launch/tests/test_folder_workflow.py)**: Added automated test suite for all 15 scenarios.
+
+---
+
+## Product Validation Refresh & Workshop Add-to-Cart Exception
+
+### Implemented Features
+
+1. **Full Catalog Validation Refresh After Product Modification**:
+   - Re-uses the canonical "Run Validation" background pipeline (`_execute_validation_job` / `run_unified_validation.py`).
+   - Automatically executes after any confirmed successful Shopify mutation (`/apply`, `/apply-all-safe`, `/rule-11/upload-custom`, `/apply-all-safe-catalog`).
+   - Re-validates all 23 current `ACTIVE` products, recalculates catalog statistics (`launch_ready`, `launch_blocked`, `average_score`), updates audit history, and updates UI state.
+   - Does NOT trigger on non-mutating previews, modal opens, cancels, or failed mutations.
+
+2. **Workshop Exception for Rule 45 (Add to Cart)**:
+   - Evaluates Rule 45 as `NOT_APPLICABLE` for Workshop products based on authoritative markers (`product_type == 'Workshop'`, collection `'Workshops'`, tags, or template).
+   - Does NOT create a blocker, does NOT penalize score (grants 100.0 points), and does NOT contribute to Launch Blocked status.
+   - Physical, digital course, and combo products continue to validate Rule 45 normally.
+
+### Automated Test Results
+- `tests/test_validation_agent.py`: 22 tests pass cleanly including `test_17_workshop_rule45_not_applicable`, `test_18_post_mutation_triggers_full_validation_refresh`, and `test_19_workshop_rule47_not_applicable`.
+- `tests/test_remediation_engine.py`: 20 tests pass cleanly.
+- `frontend`: Built successfully (`npm run build`).
+
+---
+
+## Storefront Audit Check Logic Updates (Rule 46 & Rule 47)
+
+1. **Rule 46 (Buy It Now — Direct Checkout Detection)**:
+   - Enhanced `services/browser_verifier.py` button selectors to look for custom branded CTA elements (`[data-action="buy-now"]`, `[data-testid="buy-now-btn"]`, `[data-testid="buy-it-now-button"]`, `[aria-label*="Buy Now"]`, `.shopify-payment-button__button`, `[data-testid="Checkout-button"]`, `.buy-now-btn`, `.btn-buy-now`).
+   - Added regex fallback scanning across `button`, `a`, `input[type="submit"]`, `[role="button"]` matching `/buy now/i` or `/buy/i`.
+   - Recognizes custom branded CTA text (e.g. `"BUY NOW - Rs. 1499"`) on live workshop product pages like `AI Tinker Garage Workshop`.
+
+2. **Rule 47 (Collection Card Render — Workshop Exclusion)**:
+   - Configured Check 47 to evaluate as `NOT_APPLICABLE` specifically for **Workshops** (where `product_type` is Workshop/Workshops, collection is Workshops, or tags contain `workshop`, `workshops`, `event`, `events`, `mission-tiranga`).
+   - Ensures standalone landing-page workshop products do not get blocked from launch if they do not render a standard catalog collection card.
+   - Non-workshop products (physical items, courses, etc.) continue to be verified normally.

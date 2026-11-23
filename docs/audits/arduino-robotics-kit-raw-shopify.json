@@ -1,0 +1,129 @@
+{
+    "id": "gid://shopify/Product/15756753305760",
+    "title": "Arduino Robotics Kit",
+    "body_html": "<p dir=\"ltr\"><span>Unlock the world of robotics, electronics, and programming with the KiddyPi Arduino Robotics Kit. Designed for students aged 9 years and above, this comprehensive STEM learning kit enables learners to build over 50 exciting projects while mastering the fundamentals of electronics, automation, sensors, robotics, and Arduino programming.</span></p>\n<p dir=\"ltr\"><span>Whether you're a beginner taking your first step into robotics or a young innovator looking to build advanced projects, this kit provides everything needed to learn through hands-on experimentation. Students will work with real-world sensors, motors, displays, communication modules, and robotic components while learning how microcontrollers power modern technology.</span></p>\n<p dir=\"ltr\"><span>The kit includes the powerful Arduino Uno R3, multiple sensors, motors, Bluetooth communication, LCD display, motor drivers, robotic chassis, wheels, batteries, and the exclusive KiddyPi Add-on Board to simplify project development and accelerate learning.</span></p>\n<p dir=\"ltr\"><span>Through project-based STEM learning, students develop creativity, computational thinking, engineering design skills, and problem-solving abilities while gaining practical experience in coding and electronics.</span></p>\n<h3 dir=\"ltr\"><span>What Students Will Learn</span></h3>\n<ul>\n<li><span>Arduino Programming Fundamentals</span></li>\n<li><span>C++ Programming for Embedded Systems</span></li>\n<li><span>Electronics and Circuit Design</span></li>\n<li><span>Sensor Integration and Calibration</span></li>\n<li><span>Robotics and Automation Concepts</span></li>\n<li><span>Motor Control Techniques</span></li>\n<li><span>Wireless Communication using Bluetooth</span></li>\n<li><span>Display Programming with LCD Screens</span></li>\n<li><span>Data Collection and Environmental Monitoring</span></li>\n<li><span>Engineering Design Thinking</span></li>\n<li><span>Problem Solving and Logical Reasoning</span></li>\n<li><span>Real-world Product Development</span></li>\n</ul>\n<h3 dir=\"ltr\"><span>50+ Projects Include</span></h3>\n<h4 dir=\"ltr\"><span>Beginner Projects</span></h4>\n<ul>\n<li><span>LED Blinker</span></li>\n<li><span>Electronic Dice</span></li>\n<li><span>Traffic Light Controller</span></li>\n<li><span>Smart Night Lamp</span></li>\n<li><span>Digital Buzzer Alarm</span></li>\n<li><span>Push Button Interface</span></li>\n<li><span>PWM LED Brightness Control</span></li>\n</ul>\n<h4 dir=\"ltr\"><span>Intermediate Projects</span></h4>\n<ul>\n<li><span>Distance Measurement System</span></li>\n<li><span>Obstacle Detection Robot</span></li>\n<li><span>Temperature &amp; Humidity Monitor</span></li>\n<li><span>LCD Information Display</span></li>\n<li><span>Motion Detection System</span></li>\n<li><span>Ultrasonic Parking Sensor</span></li>\n<li><span>Bluetooth-Controlled LED</span></li>\n</ul>\n<h4 dir=\"ltr\"><span>Advanced Projects</span></h4>\n<ul>\n<li><span>Bluetooth-Controlled Robot Car</span></li>\n<li><span>Obstacle Avoidance Robot</span></li>\n<li><span>Smart Environmental Monitoring Station</span></li>\n<li><span>Home Automation Prototype</span></li>\n<li><span>Autonomous Rover</span></li>\n<li><span>Security Alert System</span></li>\n<li><span>IoT-Ready Robotics Projects</span></li>\n</ul>\n<p dir=\"ltr\"><span>And 50+ guided experiments covering robotics, automation, sensing, and embedded programming.</span></p>\n<h3 dir=\"ltr\"><span>What's Included</span></h3>\n<h4 dir=\"ltr\"><span>Controller &amp; Development Boards</span></h4>\n<ul>\n<li><span>Arduino Uno R3 (DIP Version)</span></li>\n<li><span>KiddyPi Add-on Board</span></li>\n<li><span>USB Programming Cable</span></li>\n</ul>\n<h4 dir=\"ltr\"><span>Electronics Components</span></h4>\n<ul>\n<li><span>Breadboard (800 Points)</span></li>\n<li><span>Assorted Resistor Box</span></li>\n<li><span>Push Buttons</span></li>\n<li><span>LEDs (Red, Yellow, Green, White)</span></li>\n<li><span>Buzzer</span></li>\n<li><span>Male Berg Sticks</span></li>\n<li><span>IC Base</span></li>\n<li><span>L293D Motor Driver IC</span></li>\n</ul>\n<h4 dir=\"ltr\"><span>Sensors</span></h4>\n<ul>\n<li><span>IR Sensors</span></li>\n<li><span>Ultrasonic Sensor (HC-SR04)</span></li>\n<li><span>DHT11 Temperature &amp; Humidity Sensor</span></li>\n</ul>\n<h4 dir=\"ltr\"><span>Displays &amp; Communication</span></h4>\n<ul>\n<li dir=\"ltr\" role=\"presentation\"><span>LCD 16x2 Display with I2C Module</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>Bluetooth Module HC-05</span></li>\n</ul>\n<h4 dir=\"ltr\"><span>Motors &amp; Robotics Components</span></h4>\n<ul>\n<li dir=\"ltr\" role=\"presentation\"><span>Servo Motor SG90</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>BO Motors</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>BO Wheels</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>Chassis</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>Metal Caster Wheel</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>L298N Motor Driver</span></li>\n</ul>\n<h4 dir=\"ltr\"><span>Power Components</span></h4>\n<ul>\n<li dir=\"ltr\" role=\"presentation\"><span>18650 Li-Ion Battery</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>2 Cell Battery Holder</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>Battery Charger</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>9V Battery</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>9V Battery Connector</span></li>\n</ul>\n<h4 dir=\"ltr\"><span>Connectors &amp; Accessories</span></h4>\n<ul>\n<li><span>Jumper Wires (M-M, M-F, F-F)</span></li>\n<li><span>RMC Connectors</span></li>\n<li><span>Barrel Jack Connector</span></li>\n<li><span>Screw Driver</span></li>\n</ul>\n<h3 dir=\"ltr\"><span>Why Choose the KiddyPi Arduino Robotics Kit?</span></h3>\n<p dir=\"ltr\"><span>\u2714 Build 50+ STEM and Robotics Projects</span></p>\n<p dir=\"ltr\"><span>\u2714 Learn Real Arduino Programming in C++</span></p>\n<p dir=\"ltr\"><span>\u2714 Includes Robotics Hardware and Electronics Components</span></p>\n<p dir=\"ltr\"><span>\u2714 Develop Engineering and Problem-Solving Skills</span></p>\n<p dir=\"ltr\"><span>\u2714 Suitable for Home Learning, Schools, and STEM Labs</span></p>\n<p dir=\"ltr\"><span>\u2714 Beginner to Advanced Learning Path</span></p>\n<p dir=\"ltr\"><span>\u2714 Exclusive KiddyPi Add-on Board Included</span></p>\n<p dir=\"ltr\"><span>\u2714 Supports Robotics Competitions and Innovation Challenges</span></p>\n<p dir=\"ltr\"><span>\u2714 Industry-Relevant Hardware and Programming Concepts</span></p>\n<h3 dir=\"ltr\"><span>Ideal For</span></h3>\n<ul>\n<li dir=\"ltr\" role=\"presentation\"><span>Students (9+ Years)</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>Robotics Enthusiasts</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>STEM Learning Programs</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>School Innovation Labs</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>Science Exhibitions</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>Robotics Competitions</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>Makers and Hobbyists</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>Arduino Beginners</span></li>\n</ul>\n<h3 dir=\"ltr\"><span>Product Highlights</span></h3>\n<ul>\n<li dir=\"ltr\" role=\"presentation\"><span>50+ Hands-on Robotics &amp; Electronics Projects</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>Learn Arduino Programming with C++</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>Build and Program Your Own Robot Car</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>Bluetooth-Controlled Robotics Projects</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>Includes Sensors, Motors, LCD &amp; Communication Modules</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>Exclusive KiddyPi Add-on Board</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>Suitable for Beginners and Advanced Learners</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>Ideal for STEM Labs, Schools and Home Learning</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>Complete Robotics Learning Ecosystem</span></li>\n<li dir=\"ltr\" role=\"presentation\"><span>Designed for Ages 9+ Years</span></li>\n</ul>",
+    "vendor": "KiddyPi",
+    "product_type": "STEM Kit",
+    "status": "ACTIVE",
+    "handle": "kiddypi-arduino-robotics-kit-50-robotics-electronics-coding-projects-for-kids-and-beginners",
+    "tags": [
+        "age 9 plus",
+        "arduino kit",
+        "arduino projects",
+        "arduino robotics kit",
+        "arduino uno",
+        "automation kit",
+        "bluetooth robot",
+        "c++ programming",
+        "coding for kids",
+        "DIY robotics",
+        "educational robotics",
+        "electronics kit",
+        "engineering kit",
+        "innovation lab",
+        "KiddyPi",
+        "maker kit",
+        "microcontroller programming",
+        "robot car kit",
+        "robotics for students",
+        "robotics kit",
+        "robotics learning",
+        "school STEM kit",
+        "sensor kit",
+        "STEM education",
+        "STEM kit"
+    ],
+    "seo_title": "Arduino Robotics Kit for Kids | 50+ STEM & Coding Projects | KiddyPi",
+    "seo_description": "Learn robotics, Arduino programming, electronics, and automation with the KiddyPi Arduino Robotics Kit. Includes Arduino Uno, sensors, motors, Bluetooth, LCD display, and components for 50+ hands-on STEM projects.",
+    "template_suffix": "arduino-robotics-kit",
+    "category_name": "Electronics",
+    "options": [
+        {
+            "name": "Title",
+            "values": [
+                "Default Title"
+            ]
+        }
+    ],
+    "metafields": [
+        {
+            "namespace": "shopify",
+            "key": "color-pattern",
+            "value": "[\"gid://shopify/Metaobject/512674496672\",\"gid://shopify/Metaobject/512674529440\",\"gid://shopify/Metaobject/512674562208\"]"
+        },
+        {
+            "namespace": "global",
+            "key": "title_tag",
+            "value": "Arduino Robotics Kit for Kids | 50+ STEM & Coding Projects | KiddyPi"
+        },
+        {
+            "namespace": "global",
+            "key": "description_tag",
+            "value": "Learn robotics, Arduino programming, electronics, and automation with the KiddyPi Arduino Robotics Kit. Includes Arduino Uno, sensors, motors, Bluetooth, LCD display, and components for 50+ hands-on STEM projects."
+        },
+        {
+            "namespace": "judgeme",
+            "key": "badge",
+            "value": "<div style='display:none' class='jdgm-prev-badge' data-average-rating='0.00' data-number-of-reviews='0' data-number-of-questions='0'> <span class='jdgm-prev-badge__stars' data-score='0.00' tabindex='0' aria-label='0.00 stars' role='button'> <span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span> </span> <span class='jdgm-prev-badge__text'> No reviews </span> </div>"
+        },
+        {
+            "namespace": "judgeme",
+            "key": "widget",
+            "value": "<div class='jdgm-rev-widg' data-updated-at='2026-07-11T18:14:06Z' data-average-rating='0.00' data-number-of-reviews='0' data-number-of-questions='0' data-image-url='https://cdn.shopify.com/s/files/1/0685/8666/8192/files/1-AurdinoRoboticsKit.jpg?v=1781592351'> <style class='jdgm-temp-hiding-style'>.jdgm-rev-widg{ display: none }</style> <div class='jdgm-rev-widg__header'> <h2 class='jdgm-rev-widg__title'>Customer Reviews</h2>  <div class='jdgm-rev-widg__summary'> <div class='jdgm-rev-widg__summary-stars' aria-label='Average rating is 0.00 stars' role='img'> <span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span> </div> <div class='jdgm-rev-widg__summary-text'>Be the first to write a review</div> </div> <a style='display: none' href='#' class='jdgm-write-rev-link' role='button'>Write a review</a> <div class='jdgm-histogram jdgm-temp-hidden'>  <div class='jdgm-histogram__row' data-rating='5' data-frequency='0' data-percentage='0'>  <div class='jdgm-histogram__star' role='button' aria-label=\"0% (0) reviews with 5 star rating\"  tabindex='0' ><span class='jdgm-star jdgm--on'></span><span class='jdgm-star jdgm--on'></span><span class='jdgm-star jdgm--on'></span><span class='jdgm-star jdgm--on'></span><span class='jdgm-star jdgm--on'></span></div> <div class='jdgm-histogram__bar'> <div class='jdgm-histogram__bar-content' style='width: 0%;'> </div> </div> <div class='jdgm-histogram__percentage'>0%</div> <div class='jdgm-histogram__frequency'>(0)</div> </div>  <div class='jdgm-histogram__row' data-rating='4' data-frequency='0' data-percentage='0'>  <div class='jdgm-histogram__star' role='button' aria-label=\"0% (0) reviews with 4 star rating\"  tabindex='0' ><span class='jdgm-star jdgm--on'></span><span class='jdgm-star jdgm--on'></span><span class='jdgm-star jdgm--on'></span><span class='jdgm-star jdgm--on'></span><span class='jdgm-star jdgm--off'></span></div> <div class='jdgm-histogram__bar'> <div class='jdgm-histogram__bar-content' style='width: 0%;'> </div> </div> <div class='jdgm-histogram__percentage'>0%</div> <div class='jdgm-histogram__frequency'>(0)</div> </div>  <div class='jdgm-histogram__row' data-rating='3' data-frequency='0' data-percentage='0'>  <div class='jdgm-histogram__star' role='button' aria-label=\"0% (0) reviews with 3 star rating\"  tabindex='0' ><span class='jdgm-star jdgm--on'></span><span class='jdgm-star jdgm--on'></span><span class='jdgm-star jdgm--on'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span></div> <div class='jdgm-histogram__bar'> <div class='jdgm-histogram__bar-content' style='width: 0%;'> </div> </div> <div class='jdgm-histogram__percentage'>0%</div> <div class='jdgm-histogram__frequency'>(0)</div> </div>  <div class='jdgm-histogram__row' data-rating='2' data-frequency='0' data-percentage='0'>  <div class='jdgm-histogram__star' role='button' aria-label=\"0% (0) reviews with 2 star rating\"  tabindex='0' ><span class='jdgm-star jdgm--on'></span><span class='jdgm-star jdgm--on'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span></div> <div class='jdgm-histogram__bar'> <div class='jdgm-histogram__bar-content' style='width: 0%;'> </div> </div> <div class='jdgm-histogram__percentage'>0%</div> <div class='jdgm-histogram__frequency'>(0)</div> </div>  <div class='jdgm-histogram__row' data-rating='1' data-frequency='0' data-percentage='0'>  <div class='jdgm-histogram__star' role='button' aria-label=\"0% (0) reviews with 1 star rating\"  tabindex='0' ><span class='jdgm-star jdgm--on'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span></div> <div class='jdgm-histogram__bar'> <div class='jdgm-histogram__bar-content' style='width: 0%;'> </div> </div> <div class='jdgm-histogram__percentage'>0%</div> <div class='jdgm-histogram__frequency'>(0)</div> </div>  <div class='jdgm-histogram__row jdgm-histogram__clear-filter' data-rating=null tabindex='0'></div> </div>     <div class='jdgm-rev-widg__sort-wrapper'></div> </div> <div class='jdgm-rev-widg__body'>  <div class='jdgm-rev-widg__reviews'></div> <div class='jdgm-paginate' data-per-page='5' data-url='https://api.judge.me/reviews/reviews_for_widget' style=\"display: none;\"></div>  </div> <div class='jdgm-rev-widg__paginate-spinner-wrapper'> <div class='jdgm-spinner'></div> </div> </div>"
+        }
+    ],
+    "collections": [
+        "STEM Kits",
+        "Explore All Products"
+    ],
+    "images": [
+        {
+            "id": "gid://shopify/ProductImage/43116730024096",
+            "url": "https://cdn.shopify.com/s/files/1/0685/8666/8192/files/1-AurdinoRoboticsKit.jpg?v=1781592351",
+            "alt": "",
+            "width": 966,
+            "height": 1304
+        },
+        {
+            "id": "gid://shopify/ProductImage/43116730056864",
+            "url": "https://cdn.shopify.com/s/files/1/0685/8666/8192/files/2-AurdinoRoboticsKit.jpg?v=1781592351",
+            "alt": "",
+            "width": 720,
+            "height": 1600
+        },
+        {
+            "id": "gid://shopify/ProductImage/43116730089632",
+            "url": "https://cdn.shopify.com/s/files/1/0685/8666/8192/files/3-AurdinoRoboticsKit.jpg?v=1781592351",
+            "alt": "",
+            "width": 1600,
+            "height": 1147
+        },
+        {
+            "id": "gid://shopify/ProductImage/43236524458144",
+            "url": "https://cdn.shopify.com/s/files/1/0685/8666/8192/files/1-AurdinoRoboticsKit_245037c2-d7c0-45ef-ac4c-fdb52f0c275c.jpg?v=1782987827",
+            "alt": "KiddyPi MakerLab Pro",
+            "width": 966,
+            "height": 1304
+        }
+    ],
+    "variants": [
+        {
+            "id": "gid://shopify/ProductVariant/57924955111584",
+            "title": "Default Title",
+            "sku": null,
+            "barcode": "",
+            "price": "4999.00",
+            "compare_at_price": "5599.00",
+            "inventory_quantity": 10,
+            "inventory_policy": "DENY",
+            "taxable": true,
+            "requires_shipping": true,
+            "weight": 0.0,
+            "weight_unit": "KILOGRAMS",
+            "inventory_item": {
+                "tracked": true,
+                "country_code_of_origin": null
+            }
+        }
+    ]
+}

@@ -1,0 +1,111 @@
+{
+    "product_name": "DC BO Geared Motor 300 RPM | High-Torque Motor for Robotics & DIY Projects",
+    "product_id": "gid://shopify/Product/15784250966176",
+    "handle": "dc-bo-geared-motor-300-rpm-high-torque-motor-for-robotics-diy-projects",
+    "url": "https://kinq5t-q5.myshopify.com/products/dc-bo-geared-motor-300-rpm-high-torque-motor-for-robotics-diy-projects",
+    "category": "Unknown",
+    "verified_at": "2026-09-22T10:42:20.988212",
+    "checks": {
+        "43": {
+            "check_name": "Live URL Loads",
+            "section": "G. Template & Rendering",
+            "severity": "Blocker",
+            "result": "FAIL",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "status_code": 404,
+                "final_url": "https://shop.kiddypi.com/products/dc-bo-geared-motor-300-rpm-high-torque-motor-for-robotics-diy-projects",
+                "page_title": "404 Not Found \u2013 KiddyPi",
+                "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\dc-bo-geared-motor-300-rpm-high-torque-motor-for-robotics-diy-projects-check-43-live-url.png"
+            },
+            "explanation": "Live URL failed with status 404 or title '404 Not Found \u2013 KiddyPi'."
+        },
+        "40": {
+            "check_name": "Single H1",
+            "section": "F. Search Listing",
+            "severity": "Warning",
+            "result": "FAIL",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "error": "Page failed to load"
+            },
+            "explanation": "Page failed to load so H1 could not be verified."
+        },
+        "44": {
+            "check_name": "Mobile Render",
+            "section": "G. Template & Rendering",
+            "severity": "Blocker",
+            "result": "FAIL",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "viewport": "390x844",
+                "scroll_width": 390,
+                "client_width": 390,
+                "has_overflow": false,
+                "title_visible": true,
+                "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\dc-bo-geared-motor-300-rpm-high-torque-motor-for-robotics-diy-projects-check-44-mobile.png"
+            },
+            "explanation": "Mobile render had overflow or missing components."
+        },
+        "45": {
+            "check_name": "Add to Cart",
+            "section": "G. Template & Rendering",
+            "severity": "Blocker",
+            "result": "FAIL",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "button_found": false
+            },
+            "explanation": "Add to Cart button not found or disabled on product page."
+        },
+        "46": {
+            "check_name": "Buy It Now",
+            "section": "G. Template & Rendering",
+            "severity": "Blocker",
+            "result": "NOT_VERIFIABLE",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "button_found": false
+            },
+            "explanation": "Buy It Now / Dynamic checkout button not present in theme template."
+        },
+        "47": {
+            "check_name": "Collection Card Render",
+            "section": "G. Template & Rendering",
+            "severity": "Blocker",
+            "result": "FAIL",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "collection_url": null,
+                "card_found": false,
+                "card_href": null,
+                "has_image": false,
+                "has_price": false,
+                "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\dc-bo-geared-motor-300-rpm-high-torque-motor-for-robotics-diy-projects-check-47-collection-card.png"
+            },
+            "explanation": "Product card for 'dc-bo-geared-motor-300-rpm-high-torque-motor-for-robotics-diy-projects' not found on candidate collection pages."
+        },
+        "50": {
+            "check_name": "Published to Social Channels",
+            "section": "H. Channels",
+            "severity": "Warning",
+            "result": "FAIL",
+            "verification_method": "API_VERIFIED",
+            "evidence": {
+                "status": "DRAFT"
+            },
+            "explanation": "Verified via active Shopify publication status."
+        },
+        "51": {
+            "check_name": "In WhatsApp Catalogue",
+            "section": "H. Channels",
+            "severity": "Warning",
+            "result": "FAIL",
+            "verification_method": "API_VERIFIED",
+            "evidence": {
+                "status": "DRAFT"
+            },
+            "explanation": "Verified via active Shopify publication status."
+        }
+    }
+}

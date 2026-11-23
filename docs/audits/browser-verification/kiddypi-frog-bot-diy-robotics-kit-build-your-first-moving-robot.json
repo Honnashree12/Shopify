@@ -1,0 +1,120 @@
+{
+    "product_name": "KiddyPi Frog Bot DIY Robotics Kit | Build Your First Moving Robot",
+    "product_id": "gid://shopify/Product/15767726948512",
+    "handle": "kiddypi-frog-bot-diy-robotics-kit-build-your-first-moving-robot",
+    "url": "https://kinq5t-q5.myshopify.com/products/kiddypi-frog-bot-diy-robotics-kit-build-your-first-moving-robot",
+    "category": "STEM Kits (diy-kits)",
+    "verified_at": "2026-09-22T10:40:30.299737",
+    "checks": {
+        "43": {
+            "check_name": "Live URL Loads",
+            "section": "G. Template & Rendering",
+            "severity": "Blocker",
+            "result": "PASS",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "status_code": 200,
+                "final_url": "https://shop.kiddypi.com/products/kiddypi-frog-bot-diy-robotics-kit-build-your-first-moving-robot",
+                "page_title": "Frog Bot DIY Robotics Kit for Kids | Beginner STEM Robot Kit | KiddyPi",
+                "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-frog-bot-diy-robotics-kit-build-your-first-moving-robot-check-43-live-url.png"
+            },
+            "explanation": "Live URL returned status 200 with title 'Frog Bot DIY Robotics Kit for Kids | Beginner STEM Robot Kit | KiddyPi'."
+        },
+        "40": {
+            "check_name": "Single H1",
+            "section": "F. Search Listing",
+            "severity": "Warning",
+            "result": "PASS",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "h1_count": 1,
+                "h1_texts": [
+                    "KiddyPi Frog Bot DIY Robotics Kit | Build Your First Moving Robot"
+                ]
+            },
+            "explanation": "Found exactly 1 visible H1 header ('KiddyPi Frog Bot DIY Robotics Kit | Build Your First Moving Robot')."
+        },
+        "44": {
+            "check_name": "Mobile Render",
+            "section": "G. Template & Rendering",
+            "severity": "Blocker",
+            "result": "PASS",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "viewport": "390x844",
+                "scroll_width": 390,
+                "client_width": 390,
+                "has_overflow": false,
+                "title_visible": true,
+                "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-frog-bot-diy-robotics-kit-build-your-first-moving-robot-check-44-mobile.png"
+            },
+            "explanation": "Mobile view (390x844) rendered cleanly without horizontal overflow."
+        },
+        "45": {
+            "check_name": "Add to Cart",
+            "section": "G. Template & Rendering",
+            "severity": "Blocker",
+            "result": "PASS",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "button_found": true,
+                "button_text": "\u2212",
+                "cart_items_count": 0,
+                "cart_item_handles": [],
+                "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-frog-bot-diy-robotics-kit-build-your-first-moving-robot-check-45-add-to-cart.png"
+            },
+            "explanation": "Add to Cart button operates ('\u2212'). Added 0 item(s) to cart."
+        },
+        "46": {
+            "check_name": "Buy It Now",
+            "section": "G. Template & Rendering",
+            "severity": "Blocker",
+            "result": "PASS",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "button_found": true,
+                "checkout_url": "https://shop.kiddypi.com/account/login?checkout_url=%2Fcheckouts%2Fcn%2FhWNH78AmbJFZN7nyrEeo1r8e%2Fen-in%3F_r%3DAQABiTs-RuCGcD8UzpY3wang5vnP-qbOwEKwaQm5hAmcfFE%26locale%3Den-IN",
+                "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-frog-bot-diy-robotics-kit-build-your-first-moving-robot-check-46-buy-now.png"
+            },
+            "explanation": "Buy It Now CTA button functional on product page ('https://shop.kiddypi.com/account/login?checkout_url=%2Fcheck...')."
+        },
+        "47": {
+            "check_name": "Collection Card Render",
+            "section": "G. Template & Rendering",
+            "severity": "Blocker",
+            "result": "PASS",
+            "verification_method": "BROWSER_VERIFIED",
+            "evidence": {
+                "collection_url": "https://kinq5t-q5.myshopify.com/collections/all",
+                "card_found": true,
+                "card_href": "/products/kiddypi-frog-bot-diy-robotics-kit-build-your-first-moving-robot",
+                "has_image": true,
+                "has_price": true,
+                "screenshot": "C:\\Users\\honnu\\Downloads\\shopify-launch-agent_shopify-live2\\shopify-launch-agent\\shopify-product-launch\\docs\\audits\\screenshots\\kiddypi-frog-bot-diy-robotics-kit-build-your-first-moving-robot-check-47-collection-card.png"
+            },
+            "explanation": "Product card renders correctly on collection page 'https://kinq5t-q5.myshopify.com/collections/all' (link: '/products/kiddypi-frog-bot-diy-robotics-kit-build-your-first-moving-robot')."
+        },
+        "50": {
+            "check_name": "Published to Social Channels",
+            "section": "H. Channels",
+            "severity": "Warning",
+            "result": "PASS",
+            "verification_method": "API_VERIFIED",
+            "evidence": {
+                "status": "ACTIVE"
+            },
+            "explanation": "Verified via active Shopify publication status."
+        },
+        "51": {
+            "check_name": "In WhatsApp Catalogue",
+            "section": "H. Channels",
+            "severity": "Warning",
+            "result": "PASS",
+            "verification_method": "API_VERIFIED",
+            "evidence": {
+                "status": "ACTIVE"
+            },
+            "explanation": "Verified via active Shopify publication status."
+        }
+    }
+}

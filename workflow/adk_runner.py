@@ -1,7 +1,7 @@
 from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
 
-from product_workflow import product_launch_workflow, folder_product_workflow
+from product_workflow import product_launch_workflow, folder_product_workflow, validation_workflow
 
 APP_NAME = "shopify-product-launch"
 
@@ -16,5 +16,11 @@ runner = Runner(
 folder_runner = Runner(
     app_name=APP_NAME,
     agent=folder_product_workflow,
+    session_service=session_service,
+)
+
+validation_runner = Runner(
+    app_name=APP_NAME,
+    agent=validation_workflow,
     session_service=session_service,
 )

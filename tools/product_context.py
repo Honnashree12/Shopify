@@ -1,3 +1,4 @@
+# pyrefly: ignore[missing-import]
 from google.adk.tools.tool_context import ToolContext
 
 

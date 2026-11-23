@@ -1,22 +1,46 @@
 # Environment variables
 .env
+.env.*
+!.env.example
 
 # Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
 
-# Virtual Environment
+# Virtual Environments
 .venv/
 venv/
+ENV/
+env/
 
-# Mock Database
+# Outputs & Generated Artifacts
+outputs/*
+!outputs/.gitkeep
+!outputs/README.md
+
+# Databases
+*.db
 shopify_mock/*.db
+data/*.db
+!data/.gitkeep
 
-# Outputs (keeping outputs/.gitkeep)
-outputs/*.json
-outputs/*.md
+# Scratch & Temporary Debug Files
+scratch/
 
-# OS / Editor junk
+# OS / Editor Junk
 .DS_Store
+Thumbs.db
 .vscode/
-.idea/
+.idea/
+
+# Secrets, Certificates & Keyfiles
+*.pem
+*.key
+*key.json
+*credential*.json
+*service-account*.json

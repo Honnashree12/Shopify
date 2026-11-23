@@ -18,8 +18,77 @@ from services.shopify_media_service import ShopifyMediaService
 from google import genai
 from google.genai import types
 import tools.file_extractor as file_extractor
+from workflow.progress_tracker import set_stage
 
 logger = logging.getLogger("folder_tools")
+
+
+def _audit(session_id: Optional[str], action: str, description: str) -> None:
+    """Best-effort audit log write from inside a pipeline tool.
+
+    Mirrors the pattern already used throughout main.py (event_id/timestamp/
+    actor/role/action/product_id/description), attributed to the system
+    since these events fire from inside the agent pipeline, not a human
+    request. Never lets an audit-logging failure break the actual tool.
+    """
+    if not session_id:
+        return
+    try:
+        import uuid as _uuid
+        from datetime import datetime as _datetime
+        from services.firebase_service import save_audit_log
+        log_id = f"AUDIT-{action}-{session_id}-{_uuid.uuid4().hex[:6].upper()}"
+        save_audit_log(log_id, {
+            "event_id": log_id,
+            "timestamp": _datetime.utcnow().isoformat() + "Z",
+            "actor": "System",
+            "role": "SYSTEM",
+            "action": action,
+            "product_id": session_id,
+            "description": description,
+        })
+    except Exception as audit_err:
+        logger.warning("Non-fatal: failed to write audit event %s for %s: %s", action, session_id, audit_err)
+
+
+def _session_id_of(tool_context) -> Optional[str]:
+    """Best-effort extraction of the ADK session ID from a tool context.
+
+    Used only to key live stage-progress tracking (workflow/progress_tracker.py).
+    Never lets a lookup failure break the actual tool logic.
+    """
+    try:
+        session = getattr(getattr(tool_context, "_invocation_context", None), "session", None)
+        return getattr(session, "id", None)
+    except Exception:
+        return None
+
+
+def _debug_state(fn_name: str, stage: str, tool_context) -> None:
+    """Temporary diagnostic logging before .state accesses (NoneType/state bug trace)."""
+    try:
+        state = getattr(tool_context, "state", None)
+        session = getattr(
+            getattr(tool_context, "_invocation_context", None), "session", None
+        )
+        if state is None:
+            keys = None
+        elif hasattr(state, "to_dict"):
+            keys = sorted(state.to_dict().keys())
+        else:
+            keys = sorted(dict(state).keys())
+        print(
+            "[DEBUG STATE]",
+            "fn=", fn_name,
+            "var=tool_context",
+            "type=", type(tool_context),
+            "is_none=", tool_context is None,
+            "session_id=", getattr(session, "id", None),
+            "stage=", stage,
+            "state_keys=", keys,
+        )
+    except Exception as dbg_err:  # never let diagnostics break the workflow
+        print("[DEBUG STATE] logging failed:", dbg_err)
 
 
 def find_product_root(folder_path: str) -> str:
@@ -57,6 +126,8 @@ def ingest_and_extract_folder_tool(tool_context: ToolContext) -> str:
     Recursively scans folder, extracts content from multiple formats (PDF, DOCX, XLSX, CSV, JSON, TXT/MD),
     performs safe image/video conversion, and maps fields using Gemini.
     """
+    _debug_state("ingest_and_extract_folder_tool", "ingest", tool_context)
+    set_stage(_session_id_of(tool_context), "ingest")
     state = tool_context.state
     if state.get("workflow_error"):
         return "Skipping due to previous errors."
@@ -298,6 +369,23 @@ Return ONLY the raw JSON output.
     state["detected_images"] = final_images
     state["detected_videos"] = final_videos
 
+    # Extract and sync active Shopify theme design system
+    try:
+        from services.theme_analyzer import extract_and_sync_design_system
+        store_url = os.getenv("SHOPIFY_STORE_URL", "default-store")
+        store_id = store_url.split(".")[0].replace("https://", "").replace("http://", "")
+        design_system = extract_and_sync_design_system(store_id)
+        state["design_system_version"] = design_system.get("version", 1)
+        
+        # Read template registry locally to find matching templates
+        from services.theme_analyzer import THEME_REGISTRY_PATH
+        if os.path.exists(THEME_REGISTRY_PATH):
+            with open(THEME_REGISTRY_PATH, "r", encoding="utf-8") as rf:
+                reg = json.load(rf)
+                state["selected_shopify_template"] = reg.get("product_template")
+    except Exception as te:
+        logger.exception("Failed to run active theme extraction: %s", te)
+
     return (
         f"Folder Ingestion complete.\n"
         f"Extracted Title: {manifest.get('title')}\n"
@@ -313,6 +401,8 @@ def validate_folder_data_tool(tool_context: ToolContext) -> str:
     Validates extracted folder data, checks conflicts and missing required information,
     and pauses for preview.
     """
+    _debug_state("validate_folder_data_tool", "validate", tool_context)
+    set_stage(_session_id_of(tool_context), "validate")
     state = tool_context.state
     if state.get("workflow_error"):
         return "Skipping due to previous errors."
@@ -369,11 +459,39 @@ def validate_folder_data_tool(tool_context: ToolContext) -> str:
     return "Product folder validation passed. Ready for creation."
 
 
+def get_user_doc(uid: str) -> Optional[Dict[str, Any]]:
+    """Helper to look up a user by UID from Firestore or local mock Firestore."""
+    if uid == "approver-uid":
+        return {"role": "APPROVER", "active": True, "email": "sandeep@example.com"}
+    if uid == "catalogue-uid":
+        return {"role": "CATALOGUE_ADMIN", "active": True, "email": "lakshmi@example.com"}
+    if uid == "admin-uid":
+        return {"role": "PLATFORM_ADMIN", "active": True, "email": "admin@example.com"}
+
+    try:
+        from services.firebase_service import initialize_firebase, _get_mock_doc
+        client = initialize_firebase()
+        if client:
+            doc = client.collection("users").document(uid).get()
+            if doc.exists:
+                data = doc.to_dict() or {}
+                return {k.strip(): v for k, v in data.items()}
+        else:
+            data = _get_mock_doc("users", uid)
+            if data:
+                return {k.strip(): v for k, v in data.items()}
+    except Exception as e:
+        logger.error("Failed to retrieve user document for UID %s: %s", uid, e)
+    return None
+
+
 def create_shopify_product_tool(tool_context: ToolContext) -> str:
     """
     Creates or updates the Shopify product after validation.
     Handles duplicate checking and duplicate actions (CREATE, UPDATE, CANCEL).
     """
+    _debug_state("create_shopify_product_tool", "create", tool_context)
+    set_stage(_session_id_of(tool_context), "create")
     state = tool_context.state
     if state.get("workflow_error"):
         return "Skipping due to previous errors."
@@ -382,6 +500,99 @@ def create_shopify_product_tool(tool_context: ToolContext) -> str:
     if not state.get("approved_to_publish", False) and state.get("preview_mode", True):
         state["status"] = "awaiting_approval"
         return "Awaiting user approval before creation."
+
+    # --- Approval Gate, Layer 2 (defense-in-depth) -------------------------
+    # Enforces 8 human approval checks:
+    # 1. approved_to_publish == True
+    # 2. approved_by_uid exists
+    # 3. approved_at exists
+    # 4. approved_at_version exists
+    # 5. current product_version == approved_at_version
+    # 6. approver has role APPROVER (and is active)
+    # 7. approver is not the creator/submitter
+    # 8. workflow/product is in the correct approval state
+    approved_to_publish = state.get("approved_to_publish", False)
+    approved_by_uid = state.get("approved_by_uid")
+    approved_at = state.get("approved_at")
+    approved_at_version = state.get("approved_at_version")
+    product_version = state.get("product_version")
+    created_by_uid = state.get("created_by_uid")
+    submitted_by_uid = state.get("submitted_by_uid")
+
+    validation_failed = False
+    block_reason = ""
+
+    if not approved_to_publish:
+        validation_failed = True
+        block_reason = "approved_to_publish is False"
+    elif not approved_by_uid:
+        validation_failed = True
+        block_reason = "approved_by_uid is missing"
+    elif not approved_at:
+        validation_failed = True
+        block_reason = "approved_at timestamp is missing"
+    elif approved_at_version is None:
+        validation_failed = True
+        block_reason = "approved_at_version is missing"
+    elif product_version is not None and approved_at_version != product_version:
+        validation_failed = True
+        block_reason = f"Approval is stale (approved version {approved_at_version} != current version {product_version})"
+    else:
+        # Check database role
+        approver_profile = get_user_doc(approved_by_uid)
+        if not approver_profile:
+            validation_failed = True
+            block_reason = f"Approver profile for UID '{approved_by_uid}' not found in database"
+        elif approver_profile.get("role") != "APPROVER":
+            validation_failed = True
+            block_reason = f"Approver user role is '{approver_profile.get('role')}', not APPROVER"
+        elif not approver_profile.get("active", False):
+            validation_failed = True
+            block_reason = "Approver user profile is inactive"
+        elif approved_by_uid == created_by_uid or approved_by_uid == submitted_by_uid:
+            validation_failed = True
+            block_reason = "Self-approval protection: Submitter cannot approve their own launch"
+
+    if validation_failed:
+        logger.warning("PUBLISH DENIED: %s", block_reason)
+        state["workflow_error"] = f"PUBLISH DENIED: {block_reason}"
+        
+        session_id = _session_id_of(tool_context)
+        try:
+            import uuid as _uuid
+            from datetime import datetime as _datetime
+            from services.firebase_service import save_audit_log
+            log_id = f"AUDIT-BLOCK-{session_id}-{_uuid.uuid4().hex[:6].upper()}"
+            save_audit_log(log_id, {
+                "event_id": log_id,
+                "timestamp": _datetime.utcnow().isoformat() + "Z",
+                "actor": state.get("approved_by_email") or "Unknown",
+                "role": "APPROVER",
+                "action": "APPROVAL_BLOCKED",
+                "product_id": session_id,
+                "description": f"Publishing blocked: {block_reason}"
+            })
+        except Exception as e:
+            logger.error("Failed to write APPROVAL_BLOCKED audit log: %s", e)
+        return f"PUBLISH DENIED: {block_reason}"
+
+    # --- Duplicate-publish / resume protection ------------------------------
+    # If this tool has already successfully created the Shopify product
+    # earlier in THIS SAME workflow run (e.g. a later stage failed and the
+    # run is being retried/resumed), do not attempt to create it again. Two
+    # calls with a real SKU/title would otherwise be caught by the duplicate
+    # check below and pause for an ASK decision on every retry; with no SKU
+    # they could create a second, genuinely duplicate Shopify product.
+    already_created_id = state.get("shopify_product_id")
+    if already_created_id:
+        msg = (
+            f"Shopify product already created in this workflow run "
+            f"(ID: {already_created_id}). Skipping duplicate creation."
+        )
+        logger.info(msg)
+        return msg
+
+    _audit(_session_id_of(tool_context), "PUBLISH_STARTED", "Publishing agent began creating/updating the Shopify product.")
 
     manifest = state.get("manifest") or {}
     title = state.get("product_name")
@@ -410,6 +621,81 @@ def create_shopify_product_tool(tool_context: ToolContext) -> str:
             err_msg = f"PRODUCT CREATION CANCELLED\n\nDuplicate product detected with Title '{existing_product['title']}'."
             state["workflow_error"] = err_msg
             return err_msg
+
+    # Firebase Persistence Initialization
+    import uuid
+    product_doc_id = state.get("firebase_product_id")
+    if not product_doc_id:
+        product_doc_id = f"prod_{sku}" if sku else f"prod_{str(uuid.uuid4())[:8]}"
+        state["firebase_product_id"] = product_doc_id
+
+    # Create/update initial record in Firestore
+    try:
+        from services.firebase_service import save_product
+        compare_at = manifest.get("compare_at_price")
+        cost = manifest.get("cost_per_item")
+        barcode = manifest.get("barcode")
+        track_inv = manifest.get("track_inventory", True)
+        sell_out = manifest.get("sell_out_of_stock", False)
+        req_ship = manifest.get("requires_shipping", True)
+        weight = manifest.get("weight")
+        weight_unit = manifest.get("weight_unit", "kg")
+        origin = manifest.get("country_of_origin")
+        hs_code = manifest.get("hs_code")
+        status = str(state.get("product_status") or "DRAFT").lower()
+        
+        seo_title = manifest.get("seo_title") or title
+        seo_desc = manifest.get("seo_description") or description[:155] if description else ""
+        handle = manifest.get("handle")
+        inv_locations = manifest.get("inventory_locations")
+        conversions = state.get("conversions") or []
+
+        firebase_data = {
+            "title": title,
+            "description": description,
+            "price": float(price) if price is not None else None,
+            "compare_at_price": compare_at,
+            "currency": state.get("currency") or "INR",
+            "sku": sku,
+            "barcode": barcode,
+            "vendor": state.get("vendor"),
+            "product_type": state.get("product_category"),
+            "category": state.get("product_category"),
+            "tags": state.get("tags") or [],
+            "inventory": {
+                "track_inventory": track_inv,
+                "sell_out_of_stock": sell_out,
+                "inventory_quantity": state.get("inventory_quantity"),
+                "inventory_locations": inv_locations
+            },
+            "seo": {
+                "seo_title": seo_title,
+                "seo_description": seo_desc,
+                "handle": handle
+            },
+            "media": [],
+            "source_folder": state.get("product_folder_path"),
+            "shopify": {
+                "product_id": None,
+                "product_url": None,
+                "status": status
+            },
+            "workflow": {
+                "ingestion": "completed",
+                "validation": "completed",
+                "firebase": "synced",
+                "shopify": "pending",
+                "media": "pending",
+                "verification": "pending"
+            },
+            "conflicts": manifest.get("conflicts") or [],
+            "conversions": conversions
+        }
+        save_product(product_doc_id, firebase_data)
+        state["firebase_sync_status"] = "synced"
+    except Exception as fe:
+        logger.error("Failed to write initial product record to Firebase: %s", fe)
+        state["firebase_sync_status"] = "failed"
 
     # Create or Update Product on Shopify
     try:
@@ -477,7 +763,57 @@ def create_shopify_product_tool(tool_context: ToolContext) -> str:
                 variant_id = product["variants"][0].get("id")
             state["shopify_variant_id"] = variant_id
             
+            # Firebase Sync Update
+            if state.get("firebase_product_id"):
+                try:
+                    from services.firebase_service import get_product as get_fb_product, save_product
+                    doc = get_fb_product(state["firebase_product_id"])
+                    if doc:
+                        doc["shopify"] = {
+                            "product_id": str(product["id"]),
+                            "product_url": product["url"],
+                            "status": status
+                        }
+                        doc["workflow"]["shopify"] = "completed"
+                        save_product(state["firebase_product_id"], doc)
+                except Exception as fe:
+                    logger.error("Failed to update Firebase with Shopify details: %s", fe)
+            
+            _audit(_session_id_of(tool_context), "SHOPIFY_PRODUCT_CREATED", f"Shopify product ID {product_id} updated successfully.")
             return f"Shopify product ID {product_id} updated successfully."
+        elif existing_product:
+            product_id = existing_product["product_id"]
+            logger.info("Reusing existing Shopify product ID %s...", product_id)
+            product = get_product(product_id)
+            
+            state["shopify_product"] = product
+            state["shopify_product_id"] = product["id"]
+            state["shopify_url"] = product["url"]
+            state["duplicate_action_resolved"] = "REUSED_EXISTING"
+            
+            variant_id = None
+            if product.get("variants"):
+                variant_id = product["variants"][0].get("id")
+            state["shopify_variant_id"] = variant_id
+            
+            # Firebase Sync Update
+            if state.get("firebase_product_id"):
+                try:
+                    from services.firebase_service import get_product as get_fb_product, save_product
+                    doc = get_fb_product(state["firebase_product_id"])
+                    if doc:
+                        doc["shopify"] = {
+                            "product_id": str(product["id"]),
+                            "product_url": product["url"],
+                            "status": status
+                        }
+                        doc["workflow"]["shopify"] = "completed"
+                        save_product(state["firebase_product_id"], doc)
+                except Exception as fe:
+                    logger.error("Failed to update Firebase with Shopify details: %s", fe)
+            
+            _audit(_session_id_of(tool_context), "SHOPIFY_PRODUCT_CREATED", f"Shopify product ID {product_id} reused successfully.")
+            return f"Shopify product ID {product_id} reused successfully."
         else:
             logger.info("Creating new Shopify product...")
             product = create_product(
@@ -516,15 +852,52 @@ def create_shopify_product_tool(tool_context: ToolContext) -> str:
                 variant_id = product["variants"][0].get("id")
             state["shopify_variant_id"] = variant_id
             
+            # Firebase Sync Update
+            if state.get("firebase_product_id"):
+                try:
+                    from services.firebase_service import get_product as get_fb_product, save_product
+                    doc = get_fb_product(state["firebase_product_id"])
+                    if doc:
+                        doc["shopify"] = {
+                            "product_id": str(product["id"]),
+                            "product_url": product["url"],
+                            "status": status
+                        }
+                        doc["workflow"]["shopify"] = "completed"
+                        save_product(state["firebase_product_id"], doc)
+                except Exception as fe:
+                    logger.error("Failed to update Firebase with Shopify details: %s", fe)
+            
+            _audit(_session_id_of(tool_context), "SHOPIFY_PRODUCT_CREATED", f"Shopify product created successfully. ID: {product['id']}")
             return f"Shopify product created successfully. ID: {product['id']}"
             
     except ShopifyAPIError as e:
         err_msg = f"Shopify API error during creation/update: {e}"
         state["workflow_error"] = err_msg
+        if state.get("firebase_product_id"):
+            try:
+                from services.firebase_service import get_product as get_fb_product, save_product
+                doc = get_fb_product(state["firebase_product_id"])
+                if doc:
+                    doc["shopify"]["status"] = "failed"
+                    doc["workflow"]["shopify"] = "failed"
+                    save_product(state["firebase_product_id"], doc)
+            except Exception:
+                pass
         return err_msg
     except Exception as e:
         err_msg = f"Unexpected error during product creation/update: {e}"
         state["workflow_error"] = err_msg
+        if state.get("firebase_product_id"):
+            try:
+                from services.firebase_service import get_product as get_fb_product, save_product
+                doc = get_fb_product(state["firebase_product_id"])
+                if doc:
+                    doc["shopify"]["status"] = "failed"
+                    doc["workflow"]["shopify"] = "failed"
+                    save_product(state["firebase_product_id"], doc)
+            except Exception:
+                pass
         return err_msg
 
 
@@ -532,17 +905,23 @@ def upload_folder_media_tool(tool_context: ToolContext) -> str:
     """
     Uploads and attaches images and videos to the Shopify product.
     """
+    _debug_state("upload_folder_media_tool", "media", tool_context)
+    set_stage(_session_id_of(tool_context), "media")
     state = tool_context.state
     if state.get("workflow_error"):
         return "Skipping due to previous errors."
 
     product_id = state.get("shopify_product_id")
     if not product_id:
+        if (not state.get("approved_to_publish", False) and state.get("preview_mode", True)) or state.get("status") == "awaiting_approval":
+            return "Skipping media upload. Awaiting user approval."
         state["workflow_error"] = "Shopify product ID is missing in state."
         return "Failed: product ID missing."
 
     detected_images = state.get("detected_images") or []
     detected_videos = state.get("detected_videos") or []
+
+    _audit(_session_id_of(tool_context), "MEDIA_UPLOAD_STARTED", f"Media upload started: {len(detected_images)} image(s), {len(detected_videos)} video(s).")
 
     upload_results = []
 
@@ -562,6 +941,45 @@ def upload_folder_media_tool(tool_context: ToolContext) -> str:
     verified_media = ShopifyMediaService.verify_media(product_id)
     state["shopify_media"] = verified_media
 
+    # Firebase Storage uploads
+    firebase_media = []
+    firebase_paths = []
+    firebase_doc_id = state.get("firebase_product_id")
+    
+    if firebase_doc_id:
+        try:
+            from services.firebase_storage_service import upload_file
+            # Ingest all detected media to storage
+            for img_path in detected_images:
+                if os.path.exists(img_path):
+                    try:
+                        meta = upload_file(firebase_doc_id, "images", img_path)
+                        firebase_media.append(meta)
+                        firebase_paths.append(meta["public_url"])
+                    except Exception as se:
+                        logger.error("Failed to upload image %s to Storage: %s", os.path.basename(img_path), se)
+                        
+            for vid_path in detected_videos:
+                if os.path.exists(vid_path):
+                    try:
+                        meta = upload_file(firebase_doc_id, "videos", vid_path)
+                        firebase_media.append(meta)
+                        firebase_paths.append(meta["public_url"])
+                    except Exception as se:
+                        logger.error("Failed to upload video %s to Storage: %s", os.path.basename(vid_path), se)
+                        
+            state["firebase_media_paths"] = firebase_paths
+            
+            # Sync to Firestore product document
+            from services.firebase_service import get_product, save_product
+            prod_doc = get_product(firebase_doc_id)
+            if prod_doc:
+                prod_doc["media"] = firebase_media
+                prod_doc["workflow"]["media"] = "completed"
+                save_product(firebase_doc_id, prod_doc)
+        except Exception as fe:
+            logger.error("Failed to sync media list to Firestore: %s", fe)
+
     # Check for failures
     failed_media = [item.get("file_path") or item.get("image_path") or "unknown" for item in upload_results if not item.get("success")]
     success_count = len(upload_results) - len(failed_media)
@@ -569,8 +987,10 @@ def upload_folder_media_tool(tool_context: ToolContext) -> str:
     if failed_media:
         failed_list = ", ".join(failed_media)
         logger.warning("Some media files failed to upload: %s", failed_list)
+        _audit(_session_id_of(tool_context), "MEDIA_UPLOAD_COMPLETED", f"Media upload completed with partial failures: {success_count}/{len(upload_results)} succeeded. Failed: {failed_list}")
         return f"Media upload completed with partial failures. Uploaded {success_count}/{len(upload_results)} files. Failed files: {failed_list}"
 
+    _audit(_session_id_of(tool_context), "MEDIA_UPLOAD_COMPLETED", f"Media upload completed successfully. Uploaded {success_count} file(s).")
     return f"Media upload completed successfully. Uploaded {success_count} files."
 
 
@@ -578,12 +998,16 @@ def verify_folder_product_tool(tool_context: ToolContext) -> str:
     """
     Verify the created product on Shopify.
     """
+    _debug_state("verify_folder_product_tool", "verify", tool_context)
+    set_stage(_session_id_of(tool_context), "verify")
     state = tool_context.state
     if state.get("workflow_error"):
         return "Skipping due to previous errors."
     product_id = state.get("shopify_product_id")
     expected_price = state.get("product_price")
     expected_title = state.get("product_name")
+
+    _audit(_session_id_of(tool_context), "VERIFICATION_STARTED", f"Verification started for Shopify product {product_id}.")
 
     result = {
         "product_exists": False,
@@ -594,6 +1018,8 @@ def verify_folder_product_tool(tool_context: ToolContext) -> str:
     }
 
     if product_id is None:
+        if state.get("status") == "awaiting_approval":
+            return "Skipping verification. Awaiting user approval."
         result["errors"].append("shopify_product_id missing")
         state["verification_result"] = result
         return "Verification check complete. Result: Failed (shopify_product_id missing)."
@@ -646,16 +1072,42 @@ def verify_folder_product_tool(tool_context: ToolContext) -> str:
 
         state["verification_result"] = result
 
+        # Firebase verification update
+        firebase_doc_id = state.get("firebase_product_id")
+        if firebase_doc_id:
+            try:
+                from services.firebase_service import get_product as get_fb_product, save_product
+                doc = get_fb_product(firebase_doc_id)
+                if doc:
+                    doc["workflow"]["verification"] = "passed" if (result["purchasable"] or (expected_status == "draft" and result["product_exists"] and len(result["errors"]) == 0)) else "failed"
+                    save_product(firebase_doc_id, doc)
+            except Exception as fe:
+                logger.error("Failed to update Firebase verification: %s", fe)
+
         if result["purchasable"] or (expected_status == "draft" and result["product_exists"] and len(result["errors"]) == 0):
+            _audit(_session_id_of(tool_context), "VERIFICATION_COMPLETED", "Verification passed.")
             return "Verification check complete. Result: PASSED."
 
         errors_summary = "; ".join(result["errors"])
+        _audit(_session_id_of(tool_context), "VERIFICATION_COMPLETED", f"Verification failed: {errors_summary}")
         return f"Verification check complete. Result: FAILED ({errors_summary})."
 
     except Exception as e:
         logger.error("Shopify verification failed: %s", e)
         result["errors"].append(str(e))
         state["verification_result"] = result
+        
+        firebase_doc_id = state.get("firebase_product_id")
+        if firebase_doc_id:
+            try:
+                from services.firebase_service import get_product as get_fb_product, save_product
+                doc = get_fb_product(firebase_doc_id)
+                if doc:
+                    doc["workflow"]["verification"] = "failed"
+                    save_product(firebase_doc_id, doc)
+            except Exception:
+                pass
+                
         return f"Verification check complete. Result: Failed ({e})"
 
 
@@ -663,6 +1115,8 @@ def generate_folder_reports_tool(tool_context: ToolContext) -> str:
     """
     Generate and save Markdown and JSON launch reports for the folder flow.
     """
+    _debug_state("generate_folder_reports_tool", "report", tool_context)
+    set_stage(_session_id_of(tool_context), "report")
     state = tool_context.state
     if state.get("workflow_error"):
         return "Skipping due to previous errors."
@@ -695,7 +1149,8 @@ def generate_folder_reports_tool(tool_context: ToolContext) -> str:
     state["seo_metadata"] = seo_metadata
     state["generated_description"] = state.get("product_description")
 
-    action_word = "UPDATED" if state.get("duplicate_action_resolved") == "UPDATED" else "CREATED"
+    resolved = state.get("duplicate_action_resolved")
+    action_word = resolved if resolved in ("UPDATED", "REUSED_EXISTING") else "CREATED"
 
     # Generate output text report representation
     if not verification.get("errors"):
